@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="reBot-DevArm">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-1.8573419319004E-05 -3.14893917746639E-08 0.0235694730998747"
+        rpy="0 0 0" />
+      <mass
+        value="0.719994590495512" />
+      <inertia
+        ixx="0.000915098415293508"
+        ixy="1.16624299234817E-08"
+        ixz="-2.77627033649594E-07"
+        iyy="0.00159394997606591"
+        iyz="-3.83853691576437E-10"
+        izz="0.00234792471513731" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="0.00946544445312927 -0.000916580237430818 0.0265782762061412"
+        rpy="0 0 0" />
+      <mass
+        value="0.0474137994557966" />
+      <inertia
+        ixx="6.36839627695188E-05"
+        ixy="-1.55440663108089E-11"
+        ixz="-7.08508824336641E-06"
+        iyy="3.98844280553227E-05"
+        iyz="-4.45564290231006E-11"
+        izz="5.92016142489911E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0708"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="27"
+      velocity="50" />
+  </joint>
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="-0.13289 -0.0032582 -0.034938"
+        rpy="0 0 0" />
+      <mass
+        value="0.73923" />
+      <inertia
+        ixx="0.00025611"
+        ixy="-6.7442E-06"
+        ixz="4.8179E-10"
+        iyy="0.0020619"
+        iyz="4.3704E-07"
+        izz="0.0020591" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="revolute">
+    <origin
+      xyz="0.02 0.035625 0.0497"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="link1" />
+    <child
+      link="link2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="3.14"
+      effort="27"
+      velocity="50" />
+  </joint>
+  <link
+    name="link3">
+    <inertial>
+      <origin
+        xyz="0.12394 -0.054595 -0.035216"
+        rpy="0 0 0" />
+      <mass
+        value="0.51722" />
+      <inertia
+        ixx="0.00015445"
+        ixy="1.3141E-05"
+        ixz="-1.0837E-09"
+        iyy="0.0013152"
+        iyz="2.7729E-07"
+        izz="0.0013088" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="revolute">
+    <origin
+      xyz="-0.264 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="link2" />
+    <child
+      link="link3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="3.14"
+      effort="27"
+      velocity="50" />
+  </joint>
+  <link
+    name="link4">
+    <inertial>
+      <origin
+        xyz="0.0605173509890757 -0.0515591812721402 -0.0304480106784497"
+        rpy="0 0 0" />
+      <mass
+        value="0.192697131774934" />
+      <inertia
+        ixx="8.02180695386143E-05"
+        ixy="1.80653906847014E-05"
+        ixz="4.16372809232225E-08"
+        iyy="0.00011283880277066"
+        iyz="-1.27766109264829E-07"
+        izz="0.000110011824792294" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4"
+    type="revolute">
+    <origin
+      xyz="0.2426 -0.054 -0.005625"
+      rpy="0 0 0" />
+    <parent
+      link="link3" />
+    <child
+      link="link4" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.87"
+      upper="1.57"
+      effort="7"
+      velocity="200" />
+  </joint>
+  <link
+    name="link5">
+    <inertial>
+      <origin
+        xyz="-0.0050794127558127 0.00010101378072503 0.0368401332519827"
+        rpy="0 0 0" />
+      <mass
+        value="0.132385396678886" />
+      <inertia
+        ixx="5.35384612243393E-05"
+        ixy="2.77627187996668E-07"
+        ixz="3.09969892642944E-06"
+        iyy="4.65021943386178E-05"
+        iyz="1.16620238873401E-08"
+        izz="4.49715503183576E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint5"
+    type="revolute">
+    <origin
+      xyz="0.078308 -0.0355 -0.03"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="link4" />
+    <child
+      link="link5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="7"
+      velocity="200" />
+  </joint>
+  <link
+    name="link6">
+    <inertial>
+      <origin
+        xyz="1.14681284077989E-05 7.51624979459103E-05 0.0355150913822891"
+        rpy="0 0 0" />
+      <mass
+        value="0.178456061138362" />
+      <inertia
+        ixx="0.000194548973944647"
+        ixy="-1.17842202341071E-08"
+        ixz="2.46895847005566E-09"
+        iyy="5.06722659461651E-05"
+        iyz="2.7762918713302E-07"
+        izz="0.000214671216235759" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint6"
+    type="revolute">
+    <origin
+      xyz="0.027192 0 0.038"
+      rpy="0 1.5708 0" />
+    <parent
+      link="link5" />
+    <child
+      link="link6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-6.28"
+      upper="6.28"
+      effort="7"
+      velocity="200" />
+  </joint>
+  <link
+    name="end_link">
+    <inertial>
+      <origin
+        xyz="-0.0603508668147593 5.41851246163572E-08 -5.95856580462573E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0839041074390549" />
+      <inertia
+        ixx="2.00814006144879E-05"
+        ixy="-8.12712320188636E-14"
+        ixz="-2.19504115676869E-12"
+        iyy="1.9644584725852E-05"
+        iyz="2.09784702754442E-08"
+        izz="2.3128032411705E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/end_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reBot-DevArm/meshes/end_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="end_joint"
+    type="fixed">
+    <origin
+      xyz="-0.000186969018044991 -5.94517128449934E-05 0.14920932564575"
+      rpy="0 -1.5707963267949 0" />
+    <parent
+      link="link6" />
+    <child
+      link="end_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+</robot>

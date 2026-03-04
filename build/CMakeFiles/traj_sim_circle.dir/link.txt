@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/traj_sim_circle.dir/test/traj_sim_circle.cpp.o -o traj_sim_circle  -Wl,-rpath,/home/rvector/pinocchio/build/src librebot_kinematics.a /home/rvector/pinocchio/build/src/libpinocchio_default.so /home/rvector/pinocchio/build/src/libpinocchio_parsers.so 

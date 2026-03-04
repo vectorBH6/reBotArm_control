@@ -1,0 +1,23 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  )
+
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/rvector/reBot_control/src/kinematics/end_motion_stepper.cpp" "CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o" "gcc" "CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o.d"
+  "/home/rvector/reBot_control/src/kinematics/forward_kinematics.cpp" "CMakeFiles/rebot_kinematics.dir/src/kinematics/forward_kinematics.cpp.o" "gcc" "CMakeFiles/rebot_kinematics.dir/src/kinematics/forward_kinematics.cpp.o.d"
+  "/home/rvector/reBot_control/src/kinematics/inverse_kinematics.cpp" "CMakeFiles/rebot_kinematics.dir/src/kinematics/inverse_kinematics.cpp.o" "gcc" "CMakeFiles/rebot_kinematics.dir/src/kinematics/inverse_kinematics.cpp.o.d"
+  "/home/rvector/reBot_control/src/kinematics/robot_model.cpp" "CMakeFiles/rebot_kinematics.dir/src/kinematics/robot_model.cpp.o" "gcc" "CMakeFiles/rebot_kinematics.dir/src/kinematics/robot_model.cpp.o.d"
+  "/home/rvector/reBot_control/src/kinematics/trajectory_planner_geodesic.cpp" "CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o" "gcc" "CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o.d"
+  )
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

@@ -1,0 +1,12 @@
+/home/rvector/reBot_control/build/CMakeFiles/rebot_kinematics.dir
+/home/rvector/reBot_control/build/CMakeFiles/kinematics_test.dir
+/home/rvector/reBot_control/build/CMakeFiles/rebot_actuator.dir
+/home/rvector/reBot_control/build/CMakeFiles/arm_web_ctrl.dir
+/home/rvector/reBot_control/build/CMakeFiles/ik_viz.dir
+/home/rvector/reBot_control/build/CMakeFiles/traj_sim_stepper.dir
+/home/rvector/reBot_control/build/CMakeFiles/traj_sim_geodesic.dir
+/home/rvector/reBot_control/build/CMakeFiles/traj_sim_circle.dir
+/home/rvector/reBot_control/build/CMakeFiles/traj_sim_cone.dir
+/home/rvector/reBot_control/build/CMakeFiles/test.dir
+/home/rvector/reBot_control/build/CMakeFiles/edit_cache.dir
+/home/rvector/reBot_control/build/CMakeFiles/rebuild_cache.dir
