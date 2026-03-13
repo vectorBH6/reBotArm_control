@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o -o arm_web_ctrl  librebot_actuator.a /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0 
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o -o arm_web_ctrl  librebot_actuator.a /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0 

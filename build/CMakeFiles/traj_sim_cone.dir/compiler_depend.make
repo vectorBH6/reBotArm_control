@@ -58,6 +58,7 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
   /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
@@ -65,7 +66,9 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/specfun.h \
   /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/functexcept.h \
@@ -120,6 +123,7 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
@@ -142,6 +146,7 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/exception \
   /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/bits/exception_ptr.h \
@@ -208,6 +213,8 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -310,6 +317,8 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -2765,8 +2774,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/fusion/container/list/detail/next_impl.hpp:
 
-/usr/include/boost/fusion/container/list/detail/deref_impl.hpp:
-
 /usr/include/boost/fusion/container/list/cons_iterator.hpp:
 
 /usr/include/boost/fusion/sequence/intrinsic/end.hpp:
@@ -2802,8 +2809,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/fusion/iterator/next.hpp:
 
 /usr/include/boost/fusion/support/iterator_base.hpp:
-
-/usr/include/boost/fusion/support/is_iterator.hpp:
 
 /usr/include/boost/fusion/iterator/equal_to.hpp:
 
@@ -3519,15 +3524,23 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/type_traits/has_minus_assign.hpp:
 
-/home/rvector/pinocchio/include/pinocchio/eigen-macros.hpp:
+/usr/include/boost/type_traits/has_plus_assign.hpp:
 
-/usr/include/c++/11/list:
+/usr/include/boost/iostreams/detail/config/gcc.hpp:
 
-/usr/include/boost/fusion/container/vector/vector.hpp:
+/usr/include/boost/type_traits/make_void.hpp:
 
-/usr/include/eigen3/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h:
+/usr/include/boost/type_traits/detail/has_binary_operator.hpp:
 
-/usr/include/boost/iterator/distance.hpp:
+/usr/include/boost/fusion/container/vector.hpp:
+
+/usr/include/boost/detail/call_traits.hpp:
+
+/usr/include/boost/range/detail/safe_bool.hpp:
+
+/usr/include/boost/range/algorithm/equal.hpp:
+
+/usr/include/boost/iterator/iterator_adaptor.hpp:
 
 /usr/include/eigen3/Eigen/src/OrderingMethods/Amd.h:
 
@@ -3542,10 +3555,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/fusion/adapted/mpl/detail/is_view_impl.hpp:
 
 /usr/include/eigen3/Eigen/src/SparseLU/SparseLU_panel_dfs.h:
-
-/usr/include/boost/mpl/bitxor.hpp:
-
-/usr/include/c++/11/bits/allocated_ptr.h:
 
 /usr/include/eigen3/Eigen/src/SparseLU/SparseLU_pivotL.h:
 
@@ -3574,10 +3583,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/eigen3/Eigen/src/SparseLU/SparseLU_Structs.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
-
-/usr/include/eigen3/Eigen/src/IterativeLinearSolvers/LeastSquareConjugateGradient.h:
-
-/usr/include/eigen3/Eigen/SparseLU:
 
 /usr/include/boost/fusion/algorithm/iteration/detail/segmented_fold.hpp:
 
@@ -3647,8 +3652,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/c++/11/bits/stl_map.h:
 
-/usr/include/eigen3/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h:
-
 /usr/include/c++/11/bits/stl_tree.h:
 
 /usr/include/boost/type_traits/is_virtual_base_of.hpp:
@@ -3686,16 +3689,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/config/compiler/gcc.hpp:
 
 /usr/include/boost/mpl/apply.hpp:
-
-/usr/include/c++/11/iosfwd:
-
-/usr/include/eigen3/Eigen/src/SparseCore/SparseSparseProductWithPruning.h:
-
-/usr/include/boost/type_traits/integral_constant.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h:
-
-/usr/include/boost/type_traits/add_reference.hpp:
 
 /usr/include/c++/11/bits/fstream.tcc:
 
@@ -3800,6 +3793,10 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/eigen3/Eigen/src/Core/GeneralProduct.h:
 
 /usr/include/eigen3/Eigen/src/Core/Fuzzy.h:
+
+/usr/include/boost/next_prior.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/Transpose.h:
 
 /usr/include/eigen3/Eigen/src/Core/Reshaped.h:
 
@@ -3947,6 +3944,12 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/eigen3/Eigen/src/Core/functors/StlFunctors.h:
 
+/usr/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h:
+
+/usr/include/boost/type_traits/integral_constant.hpp:
+
+/usr/include/boost/type_traits/add_reference.hpp:
+
 /usr/include/boost/serialization/split_member.hpp:
 
 /usr/include/boost/variant/detail/enable_recursive_fwd.hpp:
@@ -4055,6 +4058,10 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h:
 
+/usr/include/boost/fusion/support/is_iterator.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
+
 /usr/include/boost/smart_ptr/detail/sp_forward.hpp:
 
 /usr/include/boost/serialization/collection_size_type.hpp:
@@ -4153,6 +4160,8 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/mpl/at_fwd.hpp:
 
+/usr/include/c++/11/list:
+
 /usr/include/eigen3/Eigen/src/Core/util/ConfigureVectorization.h:
 
 /usr/include/boost/mpl/contains.hpp:
@@ -4191,11 +4200,13 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /home/rvector/pinocchio/include/pinocchio/deprecation.hpp:
 
-/usr/include/boost/type_traits/detail/has_binary_operator.hpp:
-
 /usr/include/c++/11/bits/stl_iterator.h:
 
 /usr/include/c++/11/ext/atomicity.h:
+
+/usr/include/boost/mpl/bitxor.hpp:
+
+/usr/include/c++/11/bits/allocated_ptr.h:
 
 /usr/include/c++/11/cassert:
 
@@ -4213,17 +4224,21 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/type_traits/intrinsics.hpp:
 
-/usr/include/c++/11/backward/binders.h:
+/usr/include/eigen3/Eigen/Eigenvalues:
 
-/usr/include/eigen3/Eigen/src/SparseCore/SparseDenseProduct.h:
+/home/rvector/pinocchio/build/include/pinocchio/config.hpp:
 
-/usr/include/boost/smart_ptr/detail/sp_counted_base_gcc_atomic.hpp:
+/home/rvector/pinocchio/include/pinocchio/multibody/geometry-object.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/signal_ext.h:
+/usr/include/c++/11/bits/invoke.h:
 
-/usr/include/boost/mpl/iterator_category.hpp:
+/usr/include/eigen3/Eigen/src/SparseCore/SparseCompressedBase.h:
 
-/usr/include/x86_64-linux-gnu/bits/types.h:
+/usr/include/boost/mem_fn.hpp:
+
+/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h:
+
+/usr/include/c++/11/tr1/beta_function.tcc:
 
 /usr/include/boost/fusion/support/detail/pp_round.hpp:
 
@@ -4258,6 +4273,8 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/bind/bind_cc.hpp:
 
 /usr/include/eigen3/Eigen/src/SparseLU/SparseLU_gemm_kernel.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
@@ -4309,10 +4326,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/x86_64-linux-gnu/bits/confname.h:
 
-/usr/include/boost/iostreams/read.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h:
-
 /usr/include/boost/core/ref.hpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
@@ -4355,11 +4368,9 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h:
 
-/usr/include/eigen3/Eigen/src/SparseCore/SparseCompressedBase.h:
+/usr/include/c++/11/climits:
 
-/usr/include/boost/mem_fn.hpp:
-
-/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h:
+/usr/include/boost/mpl/aux_/value_wknd.hpp:
 
 /home/rvector/pinocchio/include/pinocchio/algorithm/check-model.hpp:
 
@@ -4385,22 +4396,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/mpl/aux_/config/has_xxx.hpp:
 
-/usr/include/eigen3/Eigen/src/SparseCore/SparseRedux.h:
-
-/usr/include/eigen3/Eigen/src/SparseLU/SparseLU_column_bmod.h:
-
-/usr/include/boost/fusion/mpl/empty.hpp:
-
-/usr/include/boost/utility/base_from_member.hpp:
-
-/usr/include/eigen3/Eigen/src/Householder/BlockHouseholder.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/IntegralConstant.h:
-
-/usr/include/boost/throw_exception.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/select.h:
-
 /usr/include/eigen3/Eigen/src/Core/ArrayWrapper.h:
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
@@ -4412,10 +4407,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h:
 
 /usr/include/alloca.h:
-
-/usr/include/c++/11/climits:
-
-/usr/include/boost/mpl/aux_/value_wknd.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
@@ -4432,12 +4423,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
 /usr/include/signal.h:
-
-/usr/include/eigen3/Eigen/src/SparseLU/SparseLU_column_dfs.h:
-
-/usr/include/eigen3/Eigen/src/SparseCore/SparseDiagonalProduct.h:
-
-/usr/include/c++/11/bits/stl_list.h:
 
 /usr/include/boost/serialization/collections_load_imp.hpp:
 
@@ -4539,12 +4524,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/mpl/bool_fwd.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
-
-/usr/include/x86_64-linux-gnu/bits/time.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/IndexedViewHelper.h:
-
 /usr/include/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h:
 
 /usr/include/boost/concept/detail/general.hpp:
@@ -4560,6 +4539,12 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/c++/11/bits/basic_string.h:
 
 /usr/include/boost/preprocessor/repetition/enum_params_with_a_default.hpp:
+
+/usr/include/eigen3/Eigen/src/Geometry/RotationBase.h:
+
+/usr/include/c++/11/array:
+
+/usr/include/c++/11/tr1/poly_laguerre.tcc:
 
 /usr/include/boost/preprocessor/iteration/detail/local.hpp:
 
@@ -4583,6 +4568,8 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/mpl/aux_/yes_no.hpp:
 
+/usr/include/c++/11/cwctype:
+
 /usr/include/eigen3/Eigen/src/IterativeLinearSolvers/IterativeSolverBase.h:
 
 /usr/include/boost/math/special_functions/nonfinite_num_facets.hpp:
@@ -4599,7 +4586,13 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/preprocessor/control/if.hpp:
 
-/usr/include/c++/11/bits/unique_ptr.h:
+/usr/include/c++/11/iosfwd:
+
+/usr/include/eigen3/Eigen/src/SparseCore/SparseSparseProductWithPruning.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
 /usr/include/boost/variant/variant.hpp:
 
@@ -4608,6 +4601,16 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/c++/11/ext/numeric_traits.h:
 
 /usr/include/x86_64-linux-gnu/bits/sigstack.h:
+
+/home/rvector/pinocchio/include/pinocchio/utils/string-generator.hpp:
+
+/usr/include/boost/type_traits/has_divides.hpp:
+
+/usr/include/boost/type_traits/has_plus.hpp:
+
+/usr/include/boost/mpl/aux_/nttp_decl.hpp:
+
+/usr/include/boost/type_traits/is_convertible.hpp:
 
 /usr/include/features.h:
 
@@ -4634,6 +4637,14 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/linux/limits.h:
 
 /usr/include/c++/11/bits/allocator.h:
+
+/usr/include/boost/mpl/iterator_category.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/boost/smart_ptr/detail/sp_counted_base_gcc_atomic.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/signal_ext.h:
 
 /usr/include/boost/type_traits/is_member_object_pointer.hpp:
 
@@ -4665,14 +4676,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
-/usr/include/c++/11/bits/ios_base.h:
-
-/usr/include/eigen3/Eigen/src/SparseCore/SparseColEtree.h:
-
-/usr/include/boost/mpl/vector/aux_/size.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
-
 /usr/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h:
 
 /home/rvector/pinocchio/include/pinocchio/multibody/geometry.hpp:
@@ -4703,10 +4706,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h:
 
-/usr/include/boost/mpl/list/aux_/numbered.hpp:
-
-/home/rvector/pinocchio/include/pinocchio/deprecated-namespaces.hpp:
-
 /usr/include/boost/core/default_allocator.hpp:
 
 /usr/include/stdint.h:
@@ -4722,6 +4721,8 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/fusion/view/zip_view/detail/equal_to_impl.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
 /usr/include/boost/preprocessor/iterate.hpp:
 
@@ -4750,16 +4751,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/archive/basic_binary_oarchive.hpp:
 
 /usr/include/boost/type_traits/remove_pointer.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigthread.h:
-
-/usr/include/c++/11/chrono:
-
-/usr/include/boost/archive/binary_oarchive.hpp:
-
-/usr/include/boost/mpl/protect.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
@@ -4835,16 +4826,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/c++/11/bits/concept_check.h:
 
-/usr/include/c++/11/bits/node_handle.h:
-
-/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIntDiv.h:
-
-/usr/include/c++/11/bits/stl_multiset.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
 /usr/include/c++/11/ext/aligned_buffer.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h:
@@ -4868,6 +4849,14 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/stdc-predef.h:
 
 /usr/include/boost/range/detail/misc_concept.hpp:
+
+/usr/include/eigen3/Eigen/src/SparseLU/SparseLU_column_bmod.h:
+
+/usr/include/eigen3/Eigen/src/SparseCore/SparseRedux.h:
+
+/usr/include/boost/fusion/mpl/empty.hpp:
+
+/usr/include/boost/utility/base_from_member.hpp:
 
 /usr/include/libintl.h:
 
@@ -4895,9 +4884,9 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
-/usr/include/boost/preprocessor/slot/slot.hpp:
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
-/usr/include/boost/type_traits/has_plus_assign.hpp:
+/usr/include/boost/preprocessor/slot/slot.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
@@ -4945,6 +4934,44 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/range/detail/common.hpp:
 
+/usr/include/eigen3/Eigen/src/Householder/BlockHouseholder.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/IntegralConstant.h:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/IndexedViewHelper.h:
+
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/boost/throw_exception.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/c++/11/bits/node_handle.h:
+
+/usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIntDiv.h:
+
+/usr/include/c++/11/cstdarg:
+
+/usr/include/eigen3/Eigen/src/Geometry/AlignedBox.h:
+
+/usr/include/boost/type_traits/has_trivial_assign.hpp:
+
+/usr/include/boost/range/rend.hpp:
+
+/usr/include/eigen3/Eigen/src/SparseCore/SparseRef.h:
+
+/usr/include/boost/mpl/arg.hpp:
+
+/usr/include/c++/11/bits/stl_multiset.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
+/usr/include/c++/11/backward/binders.h:
+
 /usr/include/boost/archive/basic_text_iprimitive.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h:
@@ -4965,8 +4992,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/iterator/iterator_concepts.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
 /usr/include/boost/asio/detail/string_view.hpp:
@@ -4974,6 +4999,20 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorAssign.h:
 
 /usr/include/boost/preprocessor/seq/rest_n.hpp:
+
+/usr/include/c++/11/bits/ios_base.h:
+
+/usr/include/eigen3/Eigen/src/SparseCore/SparseColEtree.h:
+
+/usr/include/boost/mpl/vector/aux_/size.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
+/usr/include/boost/type_traits/has_logical_and.hpp:
+
+/usr/include/boost/type_traits/add_const.hpp:
+
+/usr/include/boost/utility/enable_if.hpp:
 
 /usr/include/boost/mpl/pop_back.hpp:
 
@@ -4984,6 +5023,24 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/iostreams/operations.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/Assign.h:
+
+/usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigthread.h:
+
+/usr/include/c++/11/chrono:
+
+/usr/include/boost/archive/binary_oarchive.hpp:
+
+/usr/include/boost/mpl/protect.hpp:
+
+/usr/include/eigen3/Eigen/src/SparseCore/SparseDenseProduct.h:
+
+/home/rvector/pinocchio/include/pinocchio/deprecated-namespaces.hpp:
+
+/usr/include/boost/mpl/list/aux_/numbered.hpp:
+
+/usr/include/c++/11/bits/unique_ptr.h:
 
 /usr/include/eigen3/Eigen/src/Geometry/Umeyama.h:
 
@@ -5053,7 +5110,13 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/iterator/reverse_iterator.hpp:
 
+/usr/include/boost/iostreams/detail/execute.hpp:
+
+/usr/include/x86_64-linux-gnu/sys/wait.h:
+
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
 
 /usr/include/c++/11/cstdint:
 
@@ -5095,7 +5158,9 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/c++/11/cctype:
 
-/usr/include/boost/range/algorithm/equal.hpp:
+/usr/include/boost/iostreams/read.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h:
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
@@ -5111,10 +5176,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
-/home/rvector/pinocchio/include/pinocchio/multibody/geometry-object.hpp:
-
-/usr/include/c++/11/bits/invoke.h:
-
 /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
 /usr/include/boost/iostreams/detail/template_params.hpp:
@@ -5128,10 +5189,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/mpl/bool.hpp:
 
 /usr/include/boost/mpl/vector/vector20.hpp:
-
-/usr/include/boost/iostreams/detail/execute.hpp:
-
-/usr/include/x86_64-linux-gnu/sys/wait.h:
 
 /usr/include/boost/type_traits/is_scoped_enum.hpp:
 
@@ -5245,6 +5302,16 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/c++/11/cstdio:
 
+/usr/include/boost/fusion/container/list/detail/deref_impl.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
+
+/usr/include/c++/11/bits/locale_facets.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
 /usr/include/eigen3/Eigen/src/Core/Swap.h:
 
 /usr/include/boost/type_traits/has_pre_decrement.hpp:
@@ -5297,8 +5364,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/range/size.hpp:
 
-/usr/include/c++/11/cwctype:
-
 /usr/include/c++/11/bits/streambuf_iterator.h:
 
 /usr/include/boost/fusion/support/as_const.hpp:
@@ -5306,10 +5371,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/eigen3/Eigen/src/Core/Stride.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
-
-/usr/include/c++/11/bits/locale_facets.tcc:
 
 /usr/include/boost/preprocessor/control/iif.hpp:
 
@@ -5375,17 +5436,25 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/c++/11/bits/stl_relops.h:
 
-/usr/include/c++/11/tr1/beta_function.tcc:
+/usr/include/eigen3/Eigen/SparseLU:
 
-/usr/include/eigen3/Eigen/src/Geometry/RotationBase.h:
+/usr/include/eigen3/Eigen/src/IterativeLinearSolvers/LeastSquareConjugateGradient.h:
 
-/usr/include/c++/11/tr1/poly_laguerre.tcc:
+/usr/include/eigen3/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h:
 
-/usr/include/c++/11/array:
+/usr/include/boost/fusion/container/vector/vector.hpp:
 
-/usr/include/eigen3/Eigen/Eigenvalues:
+/usr/include/eigen3/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h:
 
-/home/rvector/pinocchio/build/include/pinocchio/config.hpp:
+/usr/include/boost/iterator/distance.hpp:
+
+/usr/include/eigen3/Eigen/src/SparseLU/SparseLU_column_dfs.h:
+
+/usr/include/eigen3/Eigen/src/SparseCore/SparseDiagonalProduct.h:
+
+/usr/include/c++/11/bits/stl_list.h:
+
+/home/rvector/pinocchio/include/pinocchio/eigen-macros.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h:
 
@@ -5505,10 +5574,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/type_traits/add_lvalue_reference.hpp:
 
-/usr/include/eigen3/Eigen/src/Core/Transpose.h:
-
-/usr/include/boost/next_prior.hpp:
-
 /usr/include/eigen3/Eigen/src/misc/RealSvd2x2.h:
 
 /usr/include/boost/iterator/interoperable.hpp:
@@ -5534,12 +5599,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/mpl/or.hpp:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIndexList.h:
-
-/usr/include/boost/fusion/container/vector.hpp:
-
-/usr/include/boost/detail/call_traits.hpp:
-
-/usr/include/boost/range/detail/safe_bool.hpp:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorTraits.h:
 
@@ -5693,9 +5752,9 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/c++/11/memory:
 
-/usr/include/eigen3/Eigen/src/Core/VectorBlock.h:
-
 /usr/include/boost/core/use_default.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/VectorBlock.h:
 
 /usr/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorRef.h:
 
@@ -5823,9 +5882,9 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/mpl/long_fwd.hpp:
 
-/usr/include/boost/mpl/push_back_fwd.hpp:
-
 /usr/include/c++/11/bits/ostream_insert.h:
+
+/usr/include/boost/mpl/push_back_fwd.hpp:
 
 /usr/include/boost/mpl/aux_/config/nttp.hpp:
 
@@ -5916,18 +5975,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/preprocessor/identity.hpp:
 
 /usr/include/boost/mpl/quote.hpp:
-
-/usr/include/c++/11/cstdarg:
-
-/usr/include/eigen3/Eigen/src/Geometry/AlignedBox.h:
-
-/usr/include/boost/type_traits/has_trivial_assign.hpp:
-
-/usr/include/boost/mpl/arg.hpp:
-
-/usr/include/eigen3/Eigen/src/SparseCore/SparseRef.h:
-
-/usr/include/boost/range/rend.hpp:
 
 /usr/include/boost/type_traits/has_bit_or_assign.hpp:
 
@@ -6261,16 +6308,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/mpl/limits/unrolling.hpp:
 
-/home/rvector/pinocchio/include/pinocchio/utils/string-generator.hpp:
-
-/usr/include/boost/type_traits/has_divides.hpp:
-
-/usr/include/boost/mpl/aux_/nttp_decl.hpp:
-
-/usr/include/boost/type_traits/is_convertible.hpp:
-
-/usr/include/boost/type_traits/has_plus.hpp:
-
 /usr/include/boost/mpl/remove_if.hpp:
 
 /usr/include/boost/mpl/fold.hpp:
@@ -6325,9 +6362,9 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/fusion/adapted/mpl.hpp:
 
-/usr/include/c++/11/cwchar:
-
 /usr/include/eigen3/Eigen/src/SparseLU/SparseLUImpl.h:
+
+/usr/include/c++/11/cwchar:
 
 /usr/include/boost/mpl/vector/aux_/clear.hpp:
 
@@ -6399,9 +6436,9 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/type_traits/add_cv.hpp:
 
-/home/rvector/pinocchio/include/pinocchio/context/generic.hpp:
-
 /usr/include/boost/type_traits/is_destructible.hpp:
+
+/home/rvector/pinocchio/include/pinocchio/context/generic.hpp:
 
 /usr/include/boost/type_traits/add_rvalue_reference.hpp:
 
@@ -6458,12 +6495,6 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/boost/variant/detail/apply_visitor_binary.hpp:
 
 /usr/include/boost/core/addressof.hpp:
-
-/usr/include/boost/type_traits/has_logical_and.hpp:
-
-/usr/include/boost/type_traits/add_const.hpp:
-
-/usr/include/boost/utility/enable_if.hpp:
 
 /usr/include/boost/type_traits/add_pointer.hpp:
 
@@ -6533,6 +6564,8 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 
 /usr/include/boost/mpl/aux_/fold_impl_body.hpp:
 
+/usr/include/x86_64-linux-gnu/bits/wchar2.h:
+
 /usr/include/boost/preprocessor/repetition/repeat_from_to.hpp:
 
 /usr/include/boost/detail/reference_content.hpp:
@@ -6566,9 +6599,3 @@ CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
 /usr/include/c++/11/bits/std_abs.h:
 
 /usr/include/boost/range/reverse_iterator.hpp:
-
-/usr/include/boost/iterator/iterator_adaptor.hpp:
-
-/usr/include/boost/iostreams/detail/config/gcc.hpp:
-
-/usr/include/boost/type_traits/make_void.hpp:

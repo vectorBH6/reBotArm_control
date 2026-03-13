@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <utility>
 #include <unordered_map>
+#include <algorithm>
 #include <fcntl.h>   // open()
 #include <unistd.h>  // close()
 
@@ -27,14 +28,19 @@ public:
     DmActuator(damiao::Motor_Control& mc,
                damiao::DM_Motor_Type  type,
                uint32_t slave_id, uint32_t master_id,
-               float kp, float kd)
-        : mc_(mc), motor_(type, slave_id, master_id), kp_(kp), kd_(kd)
+               float kp, float kd,
+               CtrlMode ctrl_mode, float pos_vel_speed)
+        : mc_(mc), motor_(type, slave_id, master_id),
+          kp_(kp), kd_(kd),
+          ctrl_mode_(ctrl_mode), pos_vel_speed_(pos_vel_speed)
     {
         mc_.addMotor(&motor_);  // 向控制器注册，后续收包时通过 CAN ID 路由反馈
     }
 
     // 发送 0xFC 使能帧，电机进入闭环控制
-    void enable()  override { mc_.enable(motor_); }
+    void enable() override {
+        mc_.enable(motor_);
+    }
 
     // 发送 0xFD 失能帧，电机释放扭矩（约 100 ms 完成）
     void disable() override { mc_.disable(motor_); }
@@ -45,9 +51,21 @@ public:
         mc_.control_mit(motor_, kp, kd, q, dq, tau);
     }
 
-    // 位置控制：以配置增益做 MIT，速度目标和前馈力矩均置零
+    // 位置控制：按配置的控制模式分发
     void set_position(float q) override {
-        mc_.control_mit(motor_, kp_, kd_, q, 0.f, 0.f);
+        if (ctrl_mode_ == CtrlMode::POS_VEL)
+            mc_.control_pos_vel(motor_, q, pos_vel_speed_);
+        else  // MIT（默认）
+            mc_.control_mit(motor_, kp_, kd_, q, 0.f, 0.f);
+    }
+
+    // 位置控制（带速度上限）：强制以给定 v_des 运行位置速度模式
+    void set_position_with_speed_limit(float q, float dq_max) override {
+        if (dq_max > 0.f) {
+            mc_.control_pos_vel(motor_, q, dq_max);
+        } else {
+            set_position(q);
+        }
     }
 
     void set_position_velocity(float q, float dq) override {
@@ -76,7 +94,9 @@ public:
 private:
     damiao::Motor_Control& mc_;     // 共享的 CAN 总线控制器（同总线所有电机公用）
     damiao::Motor          motor_;  // 本关节电机状态（CAN ID + 型号 + 反馈缓存）
-    float kp_, kd_;                 // set_position() 的默认 MIT 刚度/阻尼
+    float    kp_, kd_;              // set_position() 的默认 MIT 刚度/阻尼
+    CtrlMode ctrl_mode_;            // 控制模式，决定 set_position() 的底层行为
+    float    pos_vel_speed_;        // POS_VEL 模式下的速度上限 [rad/s]
 };
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -131,7 +151,8 @@ public:
             mc_,
             parse_type(cfg.type),
             cfg.slave_id, cfg.master_id,
-            cfg.mit_kp, cfg.mit_kd
+            cfg.mit_kp, cfg.mit_kd,
+            cfg.ctrl_mode, cfg.pos_vel_speed
         );
     }
 
@@ -195,6 +216,15 @@ struct ArmActuatorGroup::Impl {
 //  YAML 解析
 // ═══════════════════════════════════════════════════════════════════════════════
 
+static CtrlMode parse_ctrl_mode(const std::string& s)
+{
+    if (s == "POS_VEL") return CtrlMode::POS_VEL;
+    if (s == "VEL")     return CtrlMode::VEL;
+    if (s == "MIT")     return CtrlMode::MIT;
+    throw std::runtime_error(
+        "Unknown ctrl_mode: \"" + s + "\". Valid values: MIT / POS_VEL / VEL");
+}
+
 static std::vector<JointConfig> parse_yaml(const std::string& yaml_path)
 {
     YAML::Node root;
@@ -206,14 +236,21 @@ static std::vector<JointConfig> parse_yaml(const std::string& yaml_path)
 
     std::vector<JointConfig> config;
     for (const auto& node : root["joints"]) {
-        config.push_back({
-            node["name"].as<std::string>(),
-            node["type"].as<std::string>(),
-            node["slave_id"].as<uint32_t>(),
-            node["master_id"].as<uint32_t>(),
-            node["mit_kp"].as<float>(),
-            node["mit_kd"].as<float>(),
-        });
+        JointConfig cfg;
+        cfg.name      = node["name"].as<std::string>();
+        cfg.type      = node["type"].as<std::string>();
+        cfg.slave_id  = node["slave_id"].as<uint32_t>();
+        cfg.master_id = node["master_id"].as<uint32_t>();
+        cfg.mit_kp    = node["mit_kp"] ? node["mit_kp"].as<float>() : 0.f;
+        cfg.mit_kd    = node["mit_kd"] ? node["mit_kd"].as<float>() : 0.f;
+        cfg.ctrl_mode     = node["ctrl_mode"]
+                            ? parse_ctrl_mode(node["ctrl_mode"].as<std::string>())
+                            : CtrlMode::MIT;
+        cfg.pos_vel_speed = node["pos_vel_speed"]
+                            ? node["pos_vel_speed"].as<float>()
+                            : 5.0f;
+
+        config.push_back(std::move(cfg));
     }
     return config;
 }
@@ -304,15 +341,22 @@ std::vector<bool> ArmActuatorGroup::scan_connectivity(int timeout_ms)
     // 加大串口超时以等待电机 0xCC 状态回包（正常通信约 5 ms，此处留 100 ms 余量）
     impl_->serial->set_timeout(timeout_ms);
 
+    // 每个关节最多重试 3 次：
+    //   - 达妙量化编解码决定了零位电机回包解析后 position 不会精确等于 0，
+    //     但为保险起见，只要任意一次三值非全零就判定为已连接。
+    //   - 偶发丢包（CAN 总线瞬时干扰）在重试中可以恢复，避免误判为无连接。
+    static constexpr int SCAN_RETRIES = 3;
+
     std::vector<bool> result;
     result.reserve(impl_->joints.size());
     for (auto& j : impl_->joints) {
-        j->refresh_status();
-        // 达妙 SDK 的量化编解码保证：任何真实反馈值经 float↔uint 往返后
-        // 不会恰好得到精确的 {0, 0, 0}，以此区分"无回包"和"零位静止"
-        bool connected = (j->get_position() != 0.f ||
-                          j->get_velocity() != 0.f ||
-                          j->get_torque()   != 0.f);
+        bool connected = false;
+        for (int attempt = 0; attempt < SCAN_RETRIES && !connected; ++attempt) {
+            j->refresh_status();
+            connected = (j->get_position() != 0.f ||
+                         j->get_velocity() != 0.f ||
+                         j->get_torque()   != 0.f);
+        }
         result.push_back(connected);
     }
 
@@ -337,6 +381,16 @@ void ArmActuatorGroup::set_all_positions_velocities(
         throw std::invalid_argument("set_all_positions_velocities: size mismatch");
     for (std::size_t i = 0; i < impl_->joints.size(); ++i)
         impl_->joints[i]->set_position_velocity(positions[i], velocities[i]);
+}
+
+void ArmActuatorGroup::set_all_positions_with_speed_limit(
+    const std::vector<float>& positions,
+    float                     dq_max)
+{
+    if (positions.size() != impl_->joints.size())
+        throw std::invalid_argument("set_all_positions_with_speed_limit: size mismatch");
+    for (std::size_t i = 0; i < impl_->joints.size(); ++i)
+        impl_->joints[i]->set_position_with_speed_limit(positions[i], dq_max);
 }
 
 std::vector<float> ArmActuatorGroup::get_all_positions() const

@@ -6,9 +6,11 @@
  *       默认: /dev/ttyACM0  config/arm.yaml  8080
  */
 #include "actuator/arm_actuator_group.h"
+#include "utils/control_loop.h"
 
 #include <algorithm>
 #include <atomic>
+#include <chrono>
 #include <memory>
 #include <thread>
 #include <string>
@@ -19,12 +21,16 @@
 #include <unistd.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <limits.h>   // PATH_MAX
+#include <sys/time.h>  // timeval / SO_RCVTIMEO
+#include <limits.h>    // PATH_MAX
 
 using namespace actuator;
 
-static constexpr float Q_LIMIT_RAD = 3.14159f;
-static constexpr int   CTRL_HZ     = 200;
+static constexpr float  Q_LIMIT_RAD = 3.14159f;
+// 控制指令发送频率目标值 [Hz]。
+// 实际频率受 USB-CAN 串行往返延迟限制（7 关节约 150-200 Hz），
+// 此处设为 1000 使控制线程以最大吞吐运行（sleep_until 不会产生额外等待）。
+static constexpr double CTRL_HZ     = 1000.0;
 
 // ─── 关节共享状态（HTTP线程写请求，控制线程读/执行）─────────────────────────
 // 状态码：0=待命(已连接)  1=运行中  2=无连接
@@ -40,6 +46,7 @@ static volatile bool                      g_running = true;
 static std::unique_ptr<JointState[]>      g_joints;        // 由 main() 在构造 arm 后分配
 static size_t                             g_num_joints = 0;
 static std::atomic<int>                   g_all_req{-1};   // 全部使能/失能：-1=无 0=失能 1=使能
+static std::atomic<float>                 g_ctrl_hz{0.f};  // 实际控制频率（由控制线程测量，HTTP 线程读取）
 
 static void on_signal(int) { g_running = false; }
 
@@ -70,6 +77,9 @@ static const char HTML[] = R"html(<!DOCTYPE html>
 </style>
 </head><body>
 <h1>机械臂关节控制</h1>
+<div style="text-align:center;margin-bottom:10px;font-size:13px;color:#aaa">
+  控制频率: <span id="hz" style="color:#4fc3f7;font-weight:bold">—</span> Hz
+</div>
 <table>
   <tr><th>关节</th><th>状态</th><th>← 角度 →</th><th>指令</th><th>反馈</th><th>操作</th></tr>
   <tbody id="tb"></tbody>
@@ -103,12 +113,20 @@ fetch('/config').then(r=>r.json()).then(d=>{
   });
 });
 
+// 节流：每个关节独立维护一个 pending 值，用 rAF 合并高频 oninput 事件，
+// 每帧最多向服务器发送一次指令，避免 TCP 请求堆积造成延迟。
+const pendingCmd = {};
 function sendCmd(i, deg) {
   document.getElementById('c'+i).textContent = deg.toFixed(1) + '°';
-  fetch('/cmd', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({joint: i, pos: deg * Math.PI / 180})
+  pendingCmd[i] = deg;
+  if (pendingCmd[i+'_raf']) return;
+  pendingCmd[i+'_raf'] = requestAnimationFrame(() => {
+    pendingCmd[i+'_raf'] = null;
+    fetch('/cmd', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({joint: i, pos: pendingCmd[i] * Math.PI / 180})
+    });
   });
 }
 
@@ -137,6 +155,8 @@ const sCls = ['s0','s1','s2'], sTxt = ['待命','运行','无连接'];
 let prevSt = [];
 setInterval(() => {
   fetch('/state').then(r=>r.json()).then(d => {
+    if (d.hz !== undefined)
+      document.getElementById('hz').textContent = d.hz.toFixed(1);
     d.st.forEach((s, i) => {
       const badge = document.getElementById('st'+i);
       badge.className = 'badge ' + sCls[s];
@@ -178,6 +198,73 @@ static float json_get(const std::string& body, const char* key)
     catch (...) { return 0.f; }
 }
 
+// ─── HTTP 连接处理（每个连接在独立线程中运行）───────────────────────────────
+
+static void handle_client(int cli, const std::string& config_json)
+{
+    // 设置接收超时，避免慢速客户端阻塞线程
+    struct timeval tv{};
+    tv.tv_usec = 200000; // 200 ms
+    setsockopt(cli, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
+
+    const size_t N = g_num_joints;
+    char buf[4096]{};
+    int  n = recv(cli, buf, sizeof(buf) - 1, 0);
+    if (n > 0) {
+        std::string req(buf, n);
+        std::string body;
+        auto sep = req.find("\r\n\r\n");
+        if (sep != std::string::npos) body = req.substr(sep + 4);
+
+        if (req.find("GET /config") != std::string::npos) {
+            http_respond(cli, "application/json", config_json);
+
+        } else if (req.find("GET /state") != std::string::npos) {
+            std::string j = "{\"pos\":[";
+            for (size_t i = 0; i < N; ++i) {
+                if (i) j += ',';
+                char tmp[24];
+                snprintf(tmp, sizeof(tmp), "%.4f", g_joints[i].feedback.load());
+                j += tmp;
+            }
+            j += "],\"st\":[";
+            for (size_t i = 0; i < N; ++i) {
+                if (i) j += ',';
+                j += std::to_string(g_joints[i].status.load());
+            }
+            char hz_buf[32];
+            snprintf(hz_buf, sizeof(hz_buf), "%.1f", g_ctrl_hz.load());
+            http_respond(cli, "application/json", j + "],\"hz\":" + hz_buf + "}");
+
+        } else if (req.find("POST /cmd") != std::string::npos) {
+            int   ji  = static_cast<int>(json_get(body, "joint"));
+            float pos = json_get(body, "pos");
+            if (ji >= 0 && ji < static_cast<int>(N))
+                g_joints[ji].target = std::clamp(pos, -Q_LIMIT_RAD, Q_LIMIT_RAD);
+            http_respond(cli, "application/json", "{}");
+
+        } else if (req.find("POST /enable") != std::string::npos) {
+            int ji = static_cast<int>(json_get(body, "joint"));
+            int en = static_cast<int>(json_get(body, "enable"));
+            if (ji < 0)
+                g_all_req = en;
+            else if (ji < static_cast<int>(N))
+                g_joints[ji].req = en;
+            http_respond(cli, "application/json", "{}");
+
+        } else if (req.find("POST /zero") != std::string::npos) {
+            int ji = static_cast<int>(json_get(body, "joint"));
+            if (ji >= 0 && ji < static_cast<int>(N) && g_joints[ji].status != 2)
+                g_joints[ji].zero_req = 1;
+            http_respond(cli, "application/json", "{}");
+
+        } else {
+            http_respond(cli, "text/html; charset=utf-8", HTML);
+        }
+    }
+    close(cli);
+}
+
 // ─── HTTP 服务线程 ────────────────────────────────────────────────────────────
 
 static void http_server(int port, const std::vector<std::string>& joint_names)
@@ -197,69 +284,17 @@ static void http_server(int port, const std::vector<std::string>& joint_names)
     addr.sin_family      = AF_INET;
     addr.sin_port        = htons(port);
     addr.sin_addr.s_addr = INADDR_ANY;
-    if (bind(srv, (sockaddr*)&addr, sizeof(addr)) < 0 || listen(srv, 8) < 0) {
+    if (bind(srv, (sockaddr*)&addr, sizeof(addr)) < 0 || listen(srv, 32) < 0) {
         perror("[web] bind/listen");
         return;
     }
 
-    const size_t N = g_num_joints;
     while (g_running) {
         int cli = accept(srv, nullptr, nullptr);
         if (cli < 0) continue;
-
-        char buf[4096]{};
-        int  n = recv(cli, buf, sizeof(buf) - 1, 0);
-        if (n > 0) {
-            std::string req(buf, n);
-            std::string body;
-            auto sep = req.find("\r\n\r\n");
-            if (sep != std::string::npos) body = req.substr(sep + 4);
-
-            if (req.find("GET /config") != std::string::npos) {
-                http_respond(cli, "application/json", config_json);
-
-            } else if (req.find("GET /state") != std::string::npos) {
-                std::string j = "{\"pos\":[";
-                for (size_t i = 0; i < N; ++i) {
-                    if (i) j += ',';
-                    char tmp[24];
-                    snprintf(tmp, sizeof(tmp), "%.4f", g_joints[i].feedback.load());
-                    j += tmp;
-                }
-                j += "],\"st\":[";
-                for (size_t i = 0; i < N; ++i) {
-                    if (i) j += ',';
-                    j += std::to_string(g_joints[i].status.load());
-                }
-                http_respond(cli, "application/json", j + "]}");
-
-            } else if (req.find("POST /cmd") != std::string::npos) {
-                int   ji  = static_cast<int>(json_get(body, "joint"));
-                float pos = json_get(body, "pos");
-                if (ji >= 0 && ji < static_cast<int>(N))
-                    g_joints[ji].target = std::clamp(pos, -Q_LIMIT_RAD, Q_LIMIT_RAD);
-                http_respond(cli, "application/json", "{}");
-
-            } else if (req.find("POST /enable") != std::string::npos) {
-                int ji = static_cast<int>(json_get(body, "joint"));
-                int en = static_cast<int>(json_get(body, "enable"));
-                if (ji < 0)
-                    g_all_req = en;
-                else if (ji < static_cast<int>(N))
-                    g_joints[ji].req = en;
-                http_respond(cli, "application/json", "{}");
-
-            } else if (req.find("POST /zero") != std::string::npos) {
-                int ji = static_cast<int>(json_get(body, "joint"));
-                if (ji >= 0 && ji < static_cast<int>(N) && g_joints[ji].status != 2)
-                    g_joints[ji].zero_req = 1;
-                http_respond(cli, "application/json", "{}");
-
-            } else {
-                http_respond(cli, "text/html; charset=utf-8", HTML);
-            }
-        }
-        close(cli);
+        // 每个连接用独立 detached 线程处理，accept 立即返回继续监听，
+        // 避免串行阻塞导致 /cmd 请求在 TCP 队列中积压。
+        std::thread(handle_client, cli, config_json).detach();
     }
     close(srv);
 }
@@ -305,21 +340,39 @@ int main(int argc, char* argv[])
     g_joints = std::make_unique<JointState[]>(N);  // atomic 成员有默认值，直接零初始化
 
     // ── 扫描连接 ─────────────────────────────────────────────────────────────
+    // 扫描结果仅作提示，不锁死关节。
+    // 原因：电机恰好停在零位时三个反馈值均为 0，与超时无回包无法区分；
+    //       CAN 总线偶发丢包也可能导致误判。
+    // 策略：无论扫描结果如何，状态均初始化为"待命(0)"，让用户自主决定是否使能；
+    //       扫描未响应的关节打印警告，提醒用户注意但不禁止操作。
     puts("[arm] 扫描各关节...");
     auto connected   = arm.scan_connectivity();
     auto joint_names = arm.joint_names();
     for (size_t i = 0; i < N; ++i) {
-        g_joints[i].status = connected[i] ? 0 : 2;
-        printf("  %s: %s\n", joint_names[i].c_str(), connected[i] ? "已识别" : "无连接");
+        g_joints[i].status = 0;  // 统一初始化为待命，不因扫描失败锁死
+        if (connected[i]) {
+            printf("  %s: 已识别\n", joint_names[i].c_str());
+        } else {
+            printf("  %s: 未响应（可能在零位或总线偶发丢包，仍可尝试使能）\n",
+                   joint_names[i].c_str());
+        }
     }
 
     // ── 启动 HTTP 服务 ────────────────────────────────────────────────────────
     std::thread(http_server, port, joint_names).detach();
     printf("[arm] 打开 http://localhost:%d\n", port);
 
-    // ── 控制循环（200 Hz）────────────────────────────────────────────────────
-    while (g_running) {
-        // 全部使能/失能
+    // ── 控制循环（目标 CTRL_HZ，实际受 CAN 吞吐限制）────────────────────────
+    // ControlLoop 在独立线程中以固定频率运行 callback，回调返回 false 时自动停止。
+    // enable/disable/set_zero 均在 callback 内部串行处理，无需额外互斥。
+    // Hz 测量：每完成一次完整迭代计数，每 1 s 刷新一次 g_ctrl_hz。
+    int  hz_counter = 0;
+    auto hz_last_tp = std::chrono::steady_clock::now();
+
+    ControlLoop ctrl_loop(CTRL_HZ, [&]() -> bool {
+        if (!g_running) return false;
+
+        // 全部使能/失能（优先处理）
         int all = g_all_req.exchange(-1);
         if (all >= 0) {
             for (size_t i = 0; i < N; ++i) {
@@ -349,7 +402,7 @@ int main(int argc, char* argv[])
                 g_joints[i].status = 0;
             }
 
-            // 设零（低频，内部已加延时）
+            // 设零（内部已加 ~100ms 延时，占用当前迭代但不阻塞其他线程）
             if (g_joints[i].zero_req.exchange(0) == 1) {
                 arm[i].set_zero_position();
                 g_joints[i].target = 0.f;
@@ -365,10 +418,24 @@ int main(int argc, char* argv[])
             g_joints[i].feedback = arm[i].get_position();
         }
 
-        usleep(1000000 / CTRL_HZ);
-    }
+        // 测量实际控制频率（每 1 s 更新一次 g_ctrl_hz）
+        ++hz_counter;
+        auto now_tp = std::chrono::steady_clock::now();
+        float elapsed = std::chrono::duration<float>(now_tp - hz_last_tp).count();
+        if (elapsed >= 1.0f) {
+            g_ctrl_hz.store(hz_counter / elapsed, std::memory_order_relaxed);
+            hz_counter = 0;
+            hz_last_tp = now_tp;
+        }
+
+        return true;
+    });
+
+    // 主线程等待 SIGINT/SIGTERM
+    while (g_running) usleep(50000);
 
     // ── 退出前失能所有运行中的关节 ───────────────────────────────────────────
+    ctrl_loop.stop();
     for (size_t i = 0; i < N; ++i)
         if (g_joints[i].status == 1) arm[i].disable();
 

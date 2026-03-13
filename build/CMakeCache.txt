@@ -22,7 +22,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=Release
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -223,6 +223,9 @@ reBot_control_SOURCE_DIR:STATIC=/home/rvector/reBot_control
 
 //Dependencies for the target
 rebot_actuator_LIB_DEPENDS:STATIC=general;yaml-cpp;
+
+//Dependencies for the target
+rebot_dynamics_LIB_DEPENDS:STATIC=general;rebot_kinematics;
 
 //Dependencies for the target
 rebot_kinematics_LIB_DEPENDS:STATIC=general;/home/rvector/pinocchio/build/src/libpinocchio_default.so;general;/home/rvector/pinocchio/build/src/libpinocchio_parsers.so;

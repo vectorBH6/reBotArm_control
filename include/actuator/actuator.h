@@ -7,6 +7,17 @@
 namespace actuator {
 
 /**
+ * 关节控制模式，对应达妙电机底层控制框架。
+ *
+ *   MIT     : 阻抗控制，τ = kp*(q_des-q) + kd*(dq_des-dq) + tau_ff
+ *             参数 mit_kp / mit_kd 取自配置文件。
+ *   POS_VEL : 位置串级模式（位置环→速度环→电流环），
+ *             p_des 为目标角度，v_des 为运动速度上限（须为正值）。
+ *   VEL     : 纯速度模式。
+ */
+enum class CtrlMode { MIT, POS_VEL, VEL };
+
+/**
  * 单关节执行器抽象接口。
  *
  * 统一封装不同品牌/协议的电机驱动，上层运动控制代码只依赖此接口。
@@ -42,6 +53,20 @@ public:
      * @param q  目标关节角度 [rad]
      */
     virtual void set_position(float q) = 0;
+
+    /**
+     * 位置控制（带速度上限）。
+     *
+     * 默认实现直接调用 set_position(q)，忽略 dq_max，仅对底层支持位置速度模式
+     * 的执行器（如达妙 POS_VEL 模式）重载以生效。
+     *
+     * @param q      目标关节角度 [rad]
+     * @param dq_max 运动过程中的最大绝对角速度上限 [rad/s]，应为正值
+     */
+    virtual void set_position_with_speed_limit(float q, float dq_max) {
+        (void)dq_max;
+        set_position(q);
+    }
 
     /**
      * 位置+速度控制模式（POS_VEL 模式）。
@@ -102,8 +127,10 @@ struct JointConfig {
     std::string type;       // 电机型号，决定力矩/速度/位置的量程上限
     uint32_t    slave_id;   // 电机 CAN ID（对应拨码开关 ESC_ID）
     uint32_t    master_id;  // 主机 CAN ID（默认 slave_id + 0x10）
-    float       mit_kp;     // MIT 位置刚度 [N·m/rad]，用于 set_position()
-    float       mit_kd;     // MIT 速度阻尼 [N·m·s/rad]，用于 set_position()
+    float       mit_kp;     // MIT 位置刚度 [N·m/rad]，用于 set_position()（MIT 模式）
+    float       mit_kd;     // MIT 速度阻尼 [N·m·s/rad]，用于 set_position()（MIT 模式）
+    CtrlMode    ctrl_mode     = CtrlMode::MIT;  // 控制模式，默认 MIT；可在 yaml 中设为 POS_VEL / VEL
+    float       pos_vel_speed = 5.0f;           // POS_VEL 模式下的速度上限 [rad/s]，须为正值
 };
 
 }  // namespace actuator

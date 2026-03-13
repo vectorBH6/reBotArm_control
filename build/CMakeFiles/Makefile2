@@ -71,6 +71,12 @@ all: CMakeFiles/ik_viz.dir/all
 all: CMakeFiles/traj_sim_stepper.dir/all
 all: CMakeFiles/traj_sim_geodesic.dir/all
 all: CMakeFiles/traj_sim_circle.dir/all
+all: CMakeFiles/rebot_dynamics.dir/all
+all: CMakeFiles/gravity_comp_test.dir/all
+all: CMakeFiles/arm_traj_ctrl.dir/all
+all: CMakeFiles/arm_line_slide.dir/all
+all: CMakeFiles/arm_orient_swing.dir/all
+all: CMakeFiles/arm_state_monitor.dir/all
 all: CMakeFiles/traj_sim_cone.dir/all
 .PHONY : all
 
@@ -87,6 +93,12 @@ clean: CMakeFiles/ik_viz.dir/clean
 clean: CMakeFiles/traj_sim_stepper.dir/clean
 clean: CMakeFiles/traj_sim_geodesic.dir/clean
 clean: CMakeFiles/traj_sim_circle.dir/clean
+clean: CMakeFiles/rebot_dynamics.dir/clean
+clean: CMakeFiles/gravity_comp_test.dir/clean
+clean: CMakeFiles/arm_traj_ctrl.dir/clean
+clean: CMakeFiles/arm_line_slide.dir/clean
+clean: CMakeFiles/arm_orient_swing.dir/clean
+clean: CMakeFiles/arm_state_monitor.dir/clean
 clean: CMakeFiles/traj_sim_cone.dir/clean
 .PHONY : clean
 
@@ -97,7 +109,7 @@ clean: CMakeFiles/traj_sim_cone.dir/clean
 CMakeFiles/rebot_kinematics.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_kinematics.dir/build.make CMakeFiles/rebot_kinematics.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_kinematics.dir/build.make CMakeFiles/rebot_kinematics.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=9,10,11,12,13,14 "Built target rebot_kinematics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=21,22,23,24,25,26 "Built target rebot_kinematics"
 .PHONY : CMakeFiles/rebot_kinematics.dir/all
 
 # Build rule for subdir invocation for target.
@@ -123,7 +135,7 @@ CMakeFiles/rebot_kinematics.dir/clean:
 CMakeFiles/kinematics_test.dir/all: CMakeFiles/rebot_kinematics.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kinematics_test.dir/build.make CMakeFiles/kinematics_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kinematics_test.dir/build.make CMakeFiles/kinematics_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=5,6 "Built target kinematics_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=15,16 "Built target kinematics_test"
 .PHONY : CMakeFiles/kinematics_test.dir/all
 
 # Build rule for subdir invocation for target.
@@ -149,7 +161,7 @@ CMakeFiles/kinematics_test.dir/clean:
 CMakeFiles/rebot_actuator.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_actuator.dir/build.make CMakeFiles/rebot_actuator.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_actuator.dir/build.make CMakeFiles/rebot_actuator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=7,8 "Built target rebot_actuator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=17,18 "Built target rebot_actuator"
 .PHONY : CMakeFiles/rebot_actuator.dir/all
 
 # Build rule for subdir invocation for target.
@@ -175,7 +187,7 @@ CMakeFiles/rebot_actuator.dir/clean:
 CMakeFiles/arm_web_ctrl.dir/all: CMakeFiles/rebot_actuator.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_web_ctrl.dir/build.make CMakeFiles/arm_web_ctrl.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_web_ctrl.dir/build.make CMakeFiles/arm_web_ctrl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=1,2 "Built target arm_web_ctrl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=9,10 "Built target arm_web_ctrl"
 .PHONY : CMakeFiles/arm_web_ctrl.dir/all
 
 # Build rule for subdir invocation for target.
@@ -201,7 +213,7 @@ CMakeFiles/arm_web_ctrl.dir/clean:
 CMakeFiles/ik_viz.dir/all: CMakeFiles/rebot_kinematics.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik_viz.dir/build.make CMakeFiles/ik_viz.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik_viz.dir/build.make CMakeFiles/ik_viz.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=3,4 "Built target ik_viz"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=13,14 "Built target ik_viz"
 .PHONY : CMakeFiles/ik_viz.dir/all
 
 # Build rule for subdir invocation for target.
@@ -227,7 +239,7 @@ CMakeFiles/ik_viz.dir/clean:
 CMakeFiles/traj_sim_stepper.dir/all: CMakeFiles/rebot_kinematics.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_stepper.dir/build.make CMakeFiles/traj_sim_stepper.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_stepper.dir/build.make CMakeFiles/traj_sim_stepper.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=21,22 "Built target traj_sim_stepper"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=33,34 "Built target traj_sim_stepper"
 .PHONY : CMakeFiles/traj_sim_stepper.dir/all
 
 # Build rule for subdir invocation for target.
@@ -253,7 +265,7 @@ CMakeFiles/traj_sim_stepper.dir/clean:
 CMakeFiles/traj_sim_geodesic.dir/all: CMakeFiles/rebot_kinematics.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_geodesic.dir/build.make CMakeFiles/traj_sim_geodesic.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_geodesic.dir/build.make CMakeFiles/traj_sim_geodesic.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=19,20 "Built target traj_sim_geodesic"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=31,32 "Built target traj_sim_geodesic"
 .PHONY : CMakeFiles/traj_sim_geodesic.dir/all
 
 # Build rule for subdir invocation for target.
@@ -279,7 +291,7 @@ CMakeFiles/traj_sim_geodesic.dir/clean:
 CMakeFiles/traj_sim_circle.dir/all: CMakeFiles/rebot_kinematics.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_circle.dir/build.make CMakeFiles/traj_sim_circle.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_circle.dir/build.make CMakeFiles/traj_sim_circle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=15,16 "Built target traj_sim_circle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=27,28 "Built target traj_sim_circle"
 .PHONY : CMakeFiles/traj_sim_circle.dir/all
 
 # Build rule for subdir invocation for target.
@@ -299,13 +311,175 @@ CMakeFiles/traj_sim_circle.dir/clean:
 .PHONY : CMakeFiles/traj_sim_circle.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/rebot_dynamics.dir
+
+# All Build rule for target.
+CMakeFiles/rebot_dynamics.dir/all: CMakeFiles/rebot_kinematics.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_dynamics.dir/build.make CMakeFiles/rebot_dynamics.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_dynamics.dir/build.make CMakeFiles/rebot_dynamics.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=19,20 "Built target rebot_dynamics"
+.PHONY : CMakeFiles/rebot_dynamics.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/rebot_dynamics.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 8
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rebot_dynamics.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 0
+.PHONY : CMakeFiles/rebot_dynamics.dir/rule
+
+# Convenience name for target.
+rebot_dynamics: CMakeFiles/rebot_dynamics.dir/rule
+.PHONY : rebot_dynamics
+
+# clean rule for target.
+CMakeFiles/rebot_dynamics.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_dynamics.dir/build.make CMakeFiles/rebot_dynamics.dir/clean
+.PHONY : CMakeFiles/rebot_dynamics.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/gravity_comp_test.dir
+
+# All Build rule for target.
+CMakeFiles/gravity_comp_test.dir/all: CMakeFiles/rebot_kinematics.dir/all
+CMakeFiles/gravity_comp_test.dir/all: CMakeFiles/rebot_actuator.dir/all
+CMakeFiles/gravity_comp_test.dir/all: CMakeFiles/rebot_dynamics.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=11,12 "Built target gravity_comp_test"
+.PHONY : CMakeFiles/gravity_comp_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/gravity_comp_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gravity_comp_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 0
+.PHONY : CMakeFiles/gravity_comp_test.dir/rule
+
+# Convenience name for target.
+gravity_comp_test: CMakeFiles/gravity_comp_test.dir/rule
+.PHONY : gravity_comp_test
+
+# clean rule for target.
+CMakeFiles/gravity_comp_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/clean
+.PHONY : CMakeFiles/gravity_comp_test.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/arm_traj_ctrl.dir
+
+# All Build rule for target.
+CMakeFiles/arm_traj_ctrl.dir/all: CMakeFiles/rebot_kinematics.dir/all
+CMakeFiles/arm_traj_ctrl.dir/all: CMakeFiles/rebot_actuator.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=7,8 "Built target arm_traj_ctrl"
+.PHONY : CMakeFiles/arm_traj_ctrl.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/arm_traj_ctrl.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/arm_traj_ctrl.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 0
+.PHONY : CMakeFiles/arm_traj_ctrl.dir/rule
+
+# Convenience name for target.
+arm_traj_ctrl: CMakeFiles/arm_traj_ctrl.dir/rule
+.PHONY : arm_traj_ctrl
+
+# clean rule for target.
+CMakeFiles/arm_traj_ctrl.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/clean
+.PHONY : CMakeFiles/arm_traj_ctrl.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/arm_line_slide.dir
+
+# All Build rule for target.
+CMakeFiles/arm_line_slide.dir/all: CMakeFiles/rebot_kinematics.dir/all
+CMakeFiles/arm_line_slide.dir/all: CMakeFiles/rebot_actuator.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=1,2 "Built target arm_line_slide"
+.PHONY : CMakeFiles/arm_line_slide.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/arm_line_slide.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/arm_line_slide.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 0
+.PHONY : CMakeFiles/arm_line_slide.dir/rule
+
+# Convenience name for target.
+arm_line_slide: CMakeFiles/arm_line_slide.dir/rule
+.PHONY : arm_line_slide
+
+# clean rule for target.
+CMakeFiles/arm_line_slide.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/clean
+.PHONY : CMakeFiles/arm_line_slide.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/arm_orient_swing.dir
+
+# All Build rule for target.
+CMakeFiles/arm_orient_swing.dir/all: CMakeFiles/rebot_kinematics.dir/all
+CMakeFiles/arm_orient_swing.dir/all: CMakeFiles/rebot_actuator.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=3,4 "Built target arm_orient_swing"
+.PHONY : CMakeFiles/arm_orient_swing.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/arm_orient_swing.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/arm_orient_swing.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 0
+.PHONY : CMakeFiles/arm_orient_swing.dir/rule
+
+# Convenience name for target.
+arm_orient_swing: CMakeFiles/arm_orient_swing.dir/rule
+.PHONY : arm_orient_swing
+
+# clean rule for target.
+CMakeFiles/arm_orient_swing.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/clean
+.PHONY : CMakeFiles/arm_orient_swing.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/arm_state_monitor.dir
+
+# All Build rule for target.
+CMakeFiles/arm_state_monitor.dir/all: CMakeFiles/rebot_kinematics.dir/all
+CMakeFiles/arm_state_monitor.dir/all: CMakeFiles/rebot_actuator.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=5,6 "Built target arm_state_monitor"
+.PHONY : CMakeFiles/arm_state_monitor.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/arm_state_monitor.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/arm_state_monitor.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rvector/reBot_control/build/CMakeFiles 0
+.PHONY : CMakeFiles/arm_state_monitor.dir/rule
+
+# Convenience name for target.
+arm_state_monitor: CMakeFiles/arm_state_monitor.dir/rule
+.PHONY : arm_state_monitor
+
+# clean rule for target.
+CMakeFiles/arm_state_monitor.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/clean
+.PHONY : CMakeFiles/arm_state_monitor.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/traj_sim_cone.dir
 
 # All Build rule for target.
 CMakeFiles/traj_sim_cone.dir/all: CMakeFiles/rebot_kinematics.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_cone.dir/build.make CMakeFiles/traj_sim_cone.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_cone.dir/build.make CMakeFiles/traj_sim_cone.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=17,18 "Built target traj_sim_cone"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=29,30 "Built target traj_sim_cone"
 .PHONY : CMakeFiles/traj_sim_cone.dir/all
 
 # Build rule for subdir invocation for target.

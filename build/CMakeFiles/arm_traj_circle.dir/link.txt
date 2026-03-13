@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/arm_traj_circle.dir/test/arm_traj_circle.cpp.o -o arm_traj_circle  -Wl,-rpath,/home/rvector/pinocchio/build/src librebot_kinematics.a librebot_actuator.a /home/rvector/pinocchio/build/src/libpinocchio_default.so /home/rvector/pinocchio/build/src/libpinocchio_parsers.so /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0 

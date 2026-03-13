@@ -231,6 +231,84 @@ traj_sim_circle/fast:
 .PHONY : traj_sim_circle/fast
 
 #=============================================================================
+# Target rules for targets named rebot_dynamics
+
+# Build rule for target.
+rebot_dynamics: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rebot_dynamics
+.PHONY : rebot_dynamics
+
+# fast build rule for target.
+rebot_dynamics/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_dynamics.dir/build.make CMakeFiles/rebot_dynamics.dir/build
+.PHONY : rebot_dynamics/fast
+
+#=============================================================================
+# Target rules for targets named gravity_comp_test
+
+# Build rule for target.
+gravity_comp_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gravity_comp_test
+.PHONY : gravity_comp_test
+
+# fast build rule for target.
+gravity_comp_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/build
+.PHONY : gravity_comp_test/fast
+
+#=============================================================================
+# Target rules for targets named arm_traj_ctrl
+
+# Build rule for target.
+arm_traj_ctrl: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_traj_ctrl
+.PHONY : arm_traj_ctrl
+
+# fast build rule for target.
+arm_traj_ctrl/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/build
+.PHONY : arm_traj_ctrl/fast
+
+#=============================================================================
+# Target rules for targets named arm_line_slide
+
+# Build rule for target.
+arm_line_slide: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_line_slide
+.PHONY : arm_line_slide
+
+# fast build rule for target.
+arm_line_slide/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/build
+.PHONY : arm_line_slide/fast
+
+#=============================================================================
+# Target rules for targets named arm_orient_swing
+
+# Build rule for target.
+arm_orient_swing: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_orient_swing
+.PHONY : arm_orient_swing
+
+# fast build rule for target.
+arm_orient_swing/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/build
+.PHONY : arm_orient_swing/fast
+
+#=============================================================================
+# Target rules for targets named arm_state_monitor
+
+# Build rule for target.
+arm_state_monitor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_state_monitor
+.PHONY : arm_state_monitor
+
+# fast build rule for target.
+arm_state_monitor/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/build
+.PHONY : arm_state_monitor/fast
+
+#=============================================================================
 # Target rules for targets named traj_sim_cone
 
 # Build rule for target.
@@ -266,6 +344,30 @@ src/actuator/arm_actuator_group.s: src/actuator/arm_actuator_group.cpp.s
 src/actuator/arm_actuator_group.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_actuator.dir/build.make CMakeFiles/rebot_actuator.dir/src/actuator/arm_actuator_group.cpp.s
 .PHONY : src/actuator/arm_actuator_group.cpp.s
+
+src/dynamics/gravity_compensation.o: src/dynamics/gravity_compensation.cpp.o
+.PHONY : src/dynamics/gravity_compensation.o
+
+# target to build an object file
+src/dynamics/gravity_compensation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_dynamics.dir/build.make CMakeFiles/rebot_dynamics.dir/src/dynamics/gravity_compensation.cpp.o
+.PHONY : src/dynamics/gravity_compensation.cpp.o
+
+src/dynamics/gravity_compensation.i: src/dynamics/gravity_compensation.cpp.i
+.PHONY : src/dynamics/gravity_compensation.i
+
+# target to preprocess a source file
+src/dynamics/gravity_compensation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_dynamics.dir/build.make CMakeFiles/rebot_dynamics.dir/src/dynamics/gravity_compensation.cpp.i
+.PHONY : src/dynamics/gravity_compensation.cpp.i
+
+src/dynamics/gravity_compensation.s: src/dynamics/gravity_compensation.cpp.s
+.PHONY : src/dynamics/gravity_compensation.s
+
+# target to generate assembly for a file
+src/dynamics/gravity_compensation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_dynamics.dir/build.make CMakeFiles/rebot_dynamics.dir/src/dynamics/gravity_compensation.cpp.s
+.PHONY : src/dynamics/gravity_compensation.cpp.s
 
 src/kinematics/end_motion_stepper.o: src/kinematics/end_motion_stepper.cpp.o
 .PHONY : src/kinematics/end_motion_stepper.o
@@ -387,6 +489,102 @@ src/kinematics/trajectory_planner_geodesic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_kinematics.dir/build.make CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.s
 .PHONY : src/kinematics/trajectory_planner_geodesic.cpp.s
 
+test/arm_line_slide.o: test/arm_line_slide.cpp.o
+.PHONY : test/arm_line_slide.o
+
+# target to build an object file
+test/arm_line_slide.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/test/arm_line_slide.cpp.o
+.PHONY : test/arm_line_slide.cpp.o
+
+test/arm_line_slide.i: test/arm_line_slide.cpp.i
+.PHONY : test/arm_line_slide.i
+
+# target to preprocess a source file
+test/arm_line_slide.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/test/arm_line_slide.cpp.i
+.PHONY : test/arm_line_slide.cpp.i
+
+test/arm_line_slide.s: test/arm_line_slide.cpp.s
+.PHONY : test/arm_line_slide.s
+
+# target to generate assembly for a file
+test/arm_line_slide.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/test/arm_line_slide.cpp.s
+.PHONY : test/arm_line_slide.cpp.s
+
+test/arm_orient_swing.o: test/arm_orient_swing.cpp.o
+.PHONY : test/arm_orient_swing.o
+
+# target to build an object file
+test/arm_orient_swing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/test/arm_orient_swing.cpp.o
+.PHONY : test/arm_orient_swing.cpp.o
+
+test/arm_orient_swing.i: test/arm_orient_swing.cpp.i
+.PHONY : test/arm_orient_swing.i
+
+# target to preprocess a source file
+test/arm_orient_swing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/test/arm_orient_swing.cpp.i
+.PHONY : test/arm_orient_swing.cpp.i
+
+test/arm_orient_swing.s: test/arm_orient_swing.cpp.s
+.PHONY : test/arm_orient_swing.s
+
+# target to generate assembly for a file
+test/arm_orient_swing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/test/arm_orient_swing.cpp.s
+.PHONY : test/arm_orient_swing.cpp.s
+
+test/arm_state_monitor.o: test/arm_state_monitor.cpp.o
+.PHONY : test/arm_state_monitor.o
+
+# target to build an object file
+test/arm_state_monitor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o
+.PHONY : test/arm_state_monitor.cpp.o
+
+test/arm_state_monitor.i: test/arm_state_monitor.cpp.i
+.PHONY : test/arm_state_monitor.i
+
+# target to preprocess a source file
+test/arm_state_monitor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.i
+.PHONY : test/arm_state_monitor.cpp.i
+
+test/arm_state_monitor.s: test/arm_state_monitor.cpp.s
+.PHONY : test/arm_state_monitor.s
+
+# target to generate assembly for a file
+test/arm_state_monitor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.s
+.PHONY : test/arm_state_monitor.cpp.s
+
+test/arm_traj_ctrl.o: test/arm_traj_ctrl.cpp.o
+.PHONY : test/arm_traj_ctrl.o
+
+# target to build an object file
+test/arm_traj_ctrl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o
+.PHONY : test/arm_traj_ctrl.cpp.o
+
+test/arm_traj_ctrl.i: test/arm_traj_ctrl.cpp.i
+.PHONY : test/arm_traj_ctrl.i
+
+# target to preprocess a source file
+test/arm_traj_ctrl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.i
+.PHONY : test/arm_traj_ctrl.cpp.i
+
+test/arm_traj_ctrl.s: test/arm_traj_ctrl.cpp.s
+.PHONY : test/arm_traj_ctrl.s
+
+# target to generate assembly for a file
+test/arm_traj_ctrl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.s
+.PHONY : test/arm_traj_ctrl.cpp.s
+
 test/arm_web_ctrl.o: test/arm_web_ctrl.cpp.o
 .PHONY : test/arm_web_ctrl.o
 
@@ -410,6 +608,30 @@ test/arm_web_ctrl.s: test/arm_web_ctrl.cpp.s
 test/arm_web_ctrl.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_web_ctrl.dir/build.make CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.s
 .PHONY : test/arm_web_ctrl.cpp.s
+
+test/gravity_comp_test.o: test/gravity_comp_test.cpp.o
+.PHONY : test/gravity_comp_test.o
+
+# target to build an object file
+test/gravity_comp_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/test/gravity_comp_test.cpp.o
+.PHONY : test/gravity_comp_test.cpp.o
+
+test/gravity_comp_test.i: test/gravity_comp_test.cpp.i
+.PHONY : test/gravity_comp_test.i
+
+# target to preprocess a source file
+test/gravity_comp_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/test/gravity_comp_test.cpp.i
+.PHONY : test/gravity_comp_test.cpp.i
+
+test/gravity_comp_test.s: test/gravity_comp_test.cpp.s
+.PHONY : test/gravity_comp_test.s
+
+# target to generate assembly for a file
+test/gravity_comp_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/test/gravity_comp_test.cpp.s
+.PHONY : test/gravity_comp_test.cpp.s
 
 test/ik_viz.o: test/ik_viz.cpp.o
 .PHONY : test/ik_viz.o
@@ -564,10 +786,16 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... arm_line_slide"
+	@echo "... arm_orient_swing"
+	@echo "... arm_state_monitor"
+	@echo "... arm_traj_ctrl"
 	@echo "... arm_web_ctrl"
+	@echo "... gravity_comp_test"
 	@echo "... ik_viz"
 	@echo "... kinematics_test"
 	@echo "... rebot_actuator"
+	@echo "... rebot_dynamics"
 	@echo "... rebot_kinematics"
 	@echo "... traj_sim_circle"
 	@echo "... traj_sim_cone"
@@ -576,6 +804,9 @@ help:
 	@echo "... src/actuator/arm_actuator_group.o"
 	@echo "... src/actuator/arm_actuator_group.i"
 	@echo "... src/actuator/arm_actuator_group.s"
+	@echo "... src/dynamics/gravity_compensation.o"
+	@echo "... src/dynamics/gravity_compensation.i"
+	@echo "... src/dynamics/gravity_compensation.s"
 	@echo "... src/kinematics/end_motion_stepper.o"
 	@echo "... src/kinematics/end_motion_stepper.i"
 	@echo "... src/kinematics/end_motion_stepper.s"
@@ -591,9 +822,24 @@ help:
 	@echo "... src/kinematics/trajectory_planner_geodesic.o"
 	@echo "... src/kinematics/trajectory_planner_geodesic.i"
 	@echo "... src/kinematics/trajectory_planner_geodesic.s"
+	@echo "... test/arm_line_slide.o"
+	@echo "... test/arm_line_slide.i"
+	@echo "... test/arm_line_slide.s"
+	@echo "... test/arm_orient_swing.o"
+	@echo "... test/arm_orient_swing.i"
+	@echo "... test/arm_orient_swing.s"
+	@echo "... test/arm_state_monitor.o"
+	@echo "... test/arm_state_monitor.i"
+	@echo "... test/arm_state_monitor.s"
+	@echo "... test/arm_traj_ctrl.o"
+	@echo "... test/arm_traj_ctrl.i"
+	@echo "... test/arm_traj_ctrl.s"
 	@echo "... test/arm_web_ctrl.o"
 	@echo "... test/arm_web_ctrl.i"
 	@echo "... test/arm_web_ctrl.s"
+	@echo "... test/gravity_comp_test.o"
+	@echo "... test/gravity_comp_test.i"
+	@echo "... test/gravity_comp_test.s"
 	@echo "... test/ik_viz.o"
 	@echo "... test/ik_viz.i"
 	@echo "... test/ik_viz.s"

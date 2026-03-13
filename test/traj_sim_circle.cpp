@@ -19,11 +19,11 @@
 
 namespace {
 
-constexpr double CX = 0.4, CY = 0.0, CZ = 0.35;
-constexpr double RADIUS = 0.2;
+constexpr double CX = 0.45, CY = 0.0, CZ = 0.35;
+constexpr double RADIUS = 0.1;
 constexpr double ROLL = 3.14, PITCH = 0.0, YAW = 0.0;
 constexpr int POINTS_PER_CIRCLE = 128;
-constexpr double DURATION_PER_CIRCLE = 5.0;
+constexpr double DURATION_PER_CIRCLE = 10.0;
 constexpr double VIZ_DT = DURATION_PER_CIRCLE / POINTS_PER_CIRCLE;
 constexpr double THETA_START = M_PI / 2;  // 画圆起点 (0.4, 0, CZ+RADIUS)
 

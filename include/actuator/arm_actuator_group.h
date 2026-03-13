@@ -81,6 +81,18 @@ public:
     void set_all_positions_velocities(const std::vector<float>& positions,
                                       const std::vector<float>& velocities);
 
+    /**
+     * 批量位置控制（带统一速度上限）。
+     *
+     * 对于支持位置速度模式的执行器，将调用底层的位置速度控制接口，
+     * 以 dq_max 作为 v_des 上限；其他执行器则退化为普通位置控制。
+     *
+     * @param positions  各关节目标角度 [rad]
+     * @param dq_max     统一的最大角速度上限 [rad/s]，应为正值
+     */
+    void set_all_positions_with_speed_limit(const std::vector<float>& positions,
+                                            float dq_max);
+
     /** 读取所有关节位置（顺序同配置文件） */
     std::vector<float> get_all_positions() const;
 

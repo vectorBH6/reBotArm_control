@@ -58,5 +58,11 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/traj_sim_stepper.dir/DependInfo.cmake"
   "CMakeFiles/traj_sim_geodesic.dir/DependInfo.cmake"
   "CMakeFiles/traj_sim_circle.dir/DependInfo.cmake"
+  "CMakeFiles/rebot_dynamics.dir/DependInfo.cmake"
+  "CMakeFiles/gravity_comp_test.dir/DependInfo.cmake"
+  "CMakeFiles/arm_traj_ctrl.dir/DependInfo.cmake"
+  "CMakeFiles/arm_line_slide.dir/DependInfo.cmake"
+  "CMakeFiles/arm_orient_swing.dir/DependInfo.cmake"
+  "CMakeFiles/arm_state_monitor.dir/DependInfo.cmake"
   "CMakeFiles/traj_sim_cone.dir/DependInfo.cmake"
   )

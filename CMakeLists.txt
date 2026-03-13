@@ -124,6 +124,65 @@ set_target_properties(traj_sim_circle PROPERTIES
     INSTALL_RPATH "${PIN_RPATH}"
 )
 
+# ─── 动力学库 ──────────────────────────────────────────────────────────────────
+add_library(rebot_dynamics
+    src/dynamics/gravity_compensation.cpp
+)
+target_include_directories(rebot_dynamics PUBLIC
+    ${CMAKE_SOURCE_DIR}/include
+    ${PIN_INCLUDES}
+)
+target_link_libraries(rebot_dynamics PUBLIC rebot_kinematics)
+set_target_properties(rebot_dynamics PROPERTIES
+    BUILD_RPATH  "${PIN_RPATH}"
+    INSTALL_RPATH "${PIN_RPATH}"
+)
+
+# ─── 重力补偿实机测试 ──────────────────────────────────────────────────────────
+add_executable(gravity_comp_test test/gravity_comp_test.cpp)
+target_link_libraries(gravity_comp_test PRIVATE rebot_dynamics rebot_actuator)
+target_compile_definitions(gravity_comp_test PRIVATE URDF_PATH="${URDF_PATH}")
+set_target_properties(gravity_comp_test PROPERTIES
+    BUILD_RPATH  "${PIN_RPATH}"
+    INSTALL_RPATH "${PIN_RPATH}"
+)
+
+# ─── 实机测地线轨迹控制 ───────────────────────────────────────────────────────
+add_executable(arm_traj_ctrl test/arm_traj_ctrl.cpp)
+target_link_libraries(arm_traj_ctrl PRIVATE rebot_kinematics rebot_actuator)
+target_compile_definitions(arm_traj_ctrl PRIVATE URDF_PATH="${URDF_PATH}")
+set_target_properties(arm_traj_ctrl PROPERTIES
+    BUILD_RPATH  "${PIN_RPATH}"
+    INSTALL_RPATH "${PIN_RPATH}"
+)
+
+# ─── 末端直线来回滑动 demo ────────────────────────────────────────────────────
+add_executable(arm_line_slide test/arm_line_slide.cpp)
+target_link_libraries(arm_line_slide PRIVATE rebot_kinematics rebot_actuator)
+target_compile_definitions(arm_line_slide PRIVATE URDF_PATH="${URDF_PATH}")
+set_target_properties(arm_line_slide PROPERTIES
+    BUILD_RPATH  "${PIN_RPATH}"
+    INSTALL_RPATH "${PIN_RPATH}"
+)
+
+# ─── 末端定点姿态摆动 demo（高精度）────────────────────────────────────────────
+add_executable(arm_orient_swing test/arm_orient_swing.cpp)
+target_link_libraries(arm_orient_swing PRIVATE rebot_kinematics rebot_actuator)
+target_compile_definitions(arm_orient_swing PRIVATE URDF_PATH="${URDF_PATH}")
+set_target_properties(arm_orient_swing PROPERTIES
+    BUILD_RPATH  "${PIN_RPATH}"
+    INSTALL_RPATH "${PIN_RPATH}"
+)
+
+# ─── 实机关节/末端状态监视 ─────────────────────────────────────────────────────
+add_executable(arm_state_monitor test/arm_state_monitor.cpp)
+target_link_libraries(arm_state_monitor PRIVATE rebot_kinematics rebot_actuator)
+target_compile_definitions(arm_state_monitor PRIVATE URDF_PATH="${URDF_PATH}")
+set_target_properties(arm_state_monitor PROPERTIES
+    BUILD_RPATH  "${PIN_RPATH}"
+    INSTALL_RPATH "${PIN_RPATH}"
+)
+
 # ─── 末端定点姿态锥形扫掠演示 ──────────────────────────────────────────────────
 add_executable(traj_sim_cone test/traj_sim_cone.cpp)
 target_link_libraries(traj_sim_cone rebot_kinematics)
