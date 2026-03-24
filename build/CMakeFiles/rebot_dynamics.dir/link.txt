@@ -1,2 +1,0 @@
-/usr/bin/ar qc librebot_dynamics.a CMakeFiles/rebot_dynamics.dir/src/dynamics/gravity_compensation.cpp.o
-/usr/bin/ranlib librebot_dynamics.a
