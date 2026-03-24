@@ -65,16 +65,6 @@ CMAKE_BINARY_DIR = /home/rvector/reBot_control/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -140,19 +130,6 @@ rebot_kinematics/fast:
 .PHONY : rebot_kinematics/fast
 
 #=============================================================================
-# Target rules for targets named kinematics_test
-
-# Build rule for target.
-kinematics_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kinematics_test
-.PHONY : kinematics_test
-
-# fast build rule for target.
-kinematics_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/kinematics_test.dir/build.make CMakeFiles/kinematics_test.dir/build
-.PHONY : kinematics_test/fast
-
-#=============================================================================
 # Target rules for targets named rebot_actuator
 
 # Build rule for target.
@@ -164,6 +141,71 @@ rebot_actuator: cmake_check_build_system
 rebot_actuator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_actuator.dir/build.make CMakeFiles/rebot_actuator.dir/build
 .PHONY : rebot_actuator/fast
+
+#=============================================================================
+# Target rules for targets named rebot_dynamics
+
+# Build rule for target.
+rebot_dynamics: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rebot_dynamics
+.PHONY : rebot_dynamics
+
+# fast build rule for target.
+rebot_dynamics/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_dynamics.dir/build.make CMakeFiles/rebot_dynamics.dir/build
+.PHONY : rebot_dynamics/fast
+
+#=============================================================================
+# Target rules for targets named rebot_application
+
+# Build rule for target.
+rebot_application: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rebot_application
+.PHONY : rebot_application
+
+# fast build rule for target.
+rebot_application/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_application.dir/build.make CMakeFiles/rebot_application.dir/build
+.PHONY : rebot_application/fast
+
+#=============================================================================
+# Target rules for targets named arm_traj_ctrl
+
+# Build rule for target.
+arm_traj_ctrl: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_traj_ctrl
+.PHONY : arm_traj_ctrl
+
+# fast build rule for target.
+arm_traj_ctrl/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/build
+.PHONY : arm_traj_ctrl/fast
+
+#=============================================================================
+# Target rules for targets named arm_traj_triangle
+
+# Build rule for target.
+arm_traj_triangle: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_traj_triangle
+.PHONY : arm_traj_triangle
+
+# fast build rule for target.
+arm_traj_triangle/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_triangle.dir/build.make CMakeFiles/arm_traj_triangle.dir/build
+.PHONY : arm_traj_triangle/fast
+
+#=============================================================================
+# Target rules for targets named arm_state_monitor
+
+# Build rule for target.
+arm_state_monitor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_state_monitor
+.PHONY : arm_state_monitor
+
+# fast build rule for target.
+arm_state_monitor/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/build
+.PHONY : arm_state_monitor/fast
 
 #=============================================================================
 # Target rules for targets named arm_web_ctrl
@@ -179,6 +221,19 @@ arm_web_ctrl/fast:
 .PHONY : arm_web_ctrl/fast
 
 #=============================================================================
+# Target rules for targets named gravity_comp_single_joint_test
+
+# Build rule for target.
+gravity_comp_single_joint_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gravity_comp_single_joint_test
+.PHONY : gravity_comp_single_joint_test
+
+# fast build rule for target.
+gravity_comp_single_joint_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_single_joint_test.dir/build.make CMakeFiles/gravity_comp_single_joint_test.dir/build
+.PHONY : gravity_comp_single_joint_test/fast
+
+#=============================================================================
 # Target rules for targets named ik_viz
 
 # Build rule for target.
@@ -190,19 +245,6 @@ ik_viz: cmake_check_build_system
 ik_viz/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik_viz.dir/build.make CMakeFiles/ik_viz.dir/build
 .PHONY : ik_viz/fast
-
-#=============================================================================
-# Target rules for targets named traj_sim_stepper
-
-# Build rule for target.
-traj_sim_stepper: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 traj_sim_stepper
-.PHONY : traj_sim_stepper
-
-# fast build rule for target.
-traj_sim_stepper/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_stepper.dir/build.make CMakeFiles/traj_sim_stepper.dir/build
-.PHONY : traj_sim_stepper/fast
 
 #=============================================================================
 # Target rules for targets named traj_sim_geodesic
@@ -231,84 +273,6 @@ traj_sim_circle/fast:
 .PHONY : traj_sim_circle/fast
 
 #=============================================================================
-# Target rules for targets named rebot_dynamics
-
-# Build rule for target.
-rebot_dynamics: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rebot_dynamics
-.PHONY : rebot_dynamics
-
-# fast build rule for target.
-rebot_dynamics/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_dynamics.dir/build.make CMakeFiles/rebot_dynamics.dir/build
-.PHONY : rebot_dynamics/fast
-
-#=============================================================================
-# Target rules for targets named gravity_comp_test
-
-# Build rule for target.
-gravity_comp_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gravity_comp_test
-.PHONY : gravity_comp_test
-
-# fast build rule for target.
-gravity_comp_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/build
-.PHONY : gravity_comp_test/fast
-
-#=============================================================================
-# Target rules for targets named arm_traj_ctrl
-
-# Build rule for target.
-arm_traj_ctrl: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_traj_ctrl
-.PHONY : arm_traj_ctrl
-
-# fast build rule for target.
-arm_traj_ctrl/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/build
-.PHONY : arm_traj_ctrl/fast
-
-#=============================================================================
-# Target rules for targets named arm_line_slide
-
-# Build rule for target.
-arm_line_slide: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_line_slide
-.PHONY : arm_line_slide
-
-# fast build rule for target.
-arm_line_slide/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/build
-.PHONY : arm_line_slide/fast
-
-#=============================================================================
-# Target rules for targets named arm_orient_swing
-
-# Build rule for target.
-arm_orient_swing: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_orient_swing
-.PHONY : arm_orient_swing
-
-# fast build rule for target.
-arm_orient_swing/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/build
-.PHONY : arm_orient_swing/fast
-
-#=============================================================================
-# Target rules for targets named arm_state_monitor
-
-# Build rule for target.
-arm_state_monitor: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm_state_monitor
-.PHONY : arm_state_monitor
-
-# fast build rule for target.
-arm_state_monitor/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/build
-.PHONY : arm_state_monitor/fast
-
-#=============================================================================
 # Target rules for targets named traj_sim_cone
 
 # Build rule for target.
@@ -320,6 +284,222 @@ traj_sim_cone: cmake_check_build_system
 traj_sim_cone/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_cone.dir/build.make CMakeFiles/traj_sim_cone.dir/build
 .PHONY : traj_sim_cone/fast
+
+example/real/arm_state_monitor.o: example/real/arm_state_monitor.cpp.o
+.PHONY : example/real/arm_state_monitor.o
+
+# target to build an object file
+example/real/arm_state_monitor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o
+.PHONY : example/real/arm_state_monitor.cpp.o
+
+example/real/arm_state_monitor.i: example/real/arm_state_monitor.cpp.i
+.PHONY : example/real/arm_state_monitor.i
+
+# target to preprocess a source file
+example/real/arm_state_monitor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.i
+.PHONY : example/real/arm_state_monitor.cpp.i
+
+example/real/arm_state_monitor.s: example/real/arm_state_monitor.cpp.s
+.PHONY : example/real/arm_state_monitor.s
+
+# target to generate assembly for a file
+example/real/arm_state_monitor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.s
+.PHONY : example/real/arm_state_monitor.cpp.s
+
+example/real/arm_traj_ctrl.o: example/real/arm_traj_ctrl.cpp.o
+.PHONY : example/real/arm_traj_ctrl.o
+
+# target to build an object file
+example/real/arm_traj_ctrl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o
+.PHONY : example/real/arm_traj_ctrl.cpp.o
+
+example/real/arm_traj_ctrl.i: example/real/arm_traj_ctrl.cpp.i
+.PHONY : example/real/arm_traj_ctrl.i
+
+# target to preprocess a source file
+example/real/arm_traj_ctrl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.i
+.PHONY : example/real/arm_traj_ctrl.cpp.i
+
+example/real/arm_traj_ctrl.s: example/real/arm_traj_ctrl.cpp.s
+.PHONY : example/real/arm_traj_ctrl.s
+
+# target to generate assembly for a file
+example/real/arm_traj_ctrl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.s
+.PHONY : example/real/arm_traj_ctrl.cpp.s
+
+example/real/arm_traj_triangle.o: example/real/arm_traj_triangle.cpp.o
+.PHONY : example/real/arm_traj_triangle.o
+
+# target to build an object file
+example/real/arm_traj_triangle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_triangle.dir/build.make CMakeFiles/arm_traj_triangle.dir/example/real/arm_traj_triangle.cpp.o
+.PHONY : example/real/arm_traj_triangle.cpp.o
+
+example/real/arm_traj_triangle.i: example/real/arm_traj_triangle.cpp.i
+.PHONY : example/real/arm_traj_triangle.i
+
+# target to preprocess a source file
+example/real/arm_traj_triangle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_triangle.dir/build.make CMakeFiles/arm_traj_triangle.dir/example/real/arm_traj_triangle.cpp.i
+.PHONY : example/real/arm_traj_triangle.cpp.i
+
+example/real/arm_traj_triangle.s: example/real/arm_traj_triangle.cpp.s
+.PHONY : example/real/arm_traj_triangle.s
+
+# target to generate assembly for a file
+example/real/arm_traj_triangle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_triangle.dir/build.make CMakeFiles/arm_traj_triangle.dir/example/real/arm_traj_triangle.cpp.s
+.PHONY : example/real/arm_traj_triangle.cpp.s
+
+example/real/arm_web_ctrl.o: example/real/arm_web_ctrl.cpp.o
+.PHONY : example/real/arm_web_ctrl.o
+
+# target to build an object file
+example/real/arm_web_ctrl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_web_ctrl.dir/build.make CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o
+.PHONY : example/real/arm_web_ctrl.cpp.o
+
+example/real/arm_web_ctrl.i: example/real/arm_web_ctrl.cpp.i
+.PHONY : example/real/arm_web_ctrl.i
+
+# target to preprocess a source file
+example/real/arm_web_ctrl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_web_ctrl.dir/build.make CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.i
+.PHONY : example/real/arm_web_ctrl.cpp.i
+
+example/real/arm_web_ctrl.s: example/real/arm_web_ctrl.cpp.s
+.PHONY : example/real/arm_web_ctrl.s
+
+# target to generate assembly for a file
+example/real/arm_web_ctrl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_web_ctrl.dir/build.make CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.s
+.PHONY : example/real/arm_web_ctrl.cpp.s
+
+example/real/gravity_comp_single_joint_test.o: example/real/gravity_comp_single_joint_test.cpp.o
+.PHONY : example/real/gravity_comp_single_joint_test.o
+
+# target to build an object file
+example/real/gravity_comp_single_joint_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_single_joint_test.dir/build.make CMakeFiles/gravity_comp_single_joint_test.dir/example/real/gravity_comp_single_joint_test.cpp.o
+.PHONY : example/real/gravity_comp_single_joint_test.cpp.o
+
+example/real/gravity_comp_single_joint_test.i: example/real/gravity_comp_single_joint_test.cpp.i
+.PHONY : example/real/gravity_comp_single_joint_test.i
+
+# target to preprocess a source file
+example/real/gravity_comp_single_joint_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_single_joint_test.dir/build.make CMakeFiles/gravity_comp_single_joint_test.dir/example/real/gravity_comp_single_joint_test.cpp.i
+.PHONY : example/real/gravity_comp_single_joint_test.cpp.i
+
+example/real/gravity_comp_single_joint_test.s: example/real/gravity_comp_single_joint_test.cpp.s
+.PHONY : example/real/gravity_comp_single_joint_test.s
+
+# target to generate assembly for a file
+example/real/gravity_comp_single_joint_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_single_joint_test.dir/build.make CMakeFiles/gravity_comp_single_joint_test.dir/example/real/gravity_comp_single_joint_test.cpp.s
+.PHONY : example/real/gravity_comp_single_joint_test.cpp.s
+
+example/sim/ik_viz.o: example/sim/ik_viz.cpp.o
+.PHONY : example/sim/ik_viz.o
+
+# target to build an object file
+example/sim/ik_viz.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik_viz.dir/build.make CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o
+.PHONY : example/sim/ik_viz.cpp.o
+
+example/sim/ik_viz.i: example/sim/ik_viz.cpp.i
+.PHONY : example/sim/ik_viz.i
+
+# target to preprocess a source file
+example/sim/ik_viz.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik_viz.dir/build.make CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.i
+.PHONY : example/sim/ik_viz.cpp.i
+
+example/sim/ik_viz.s: example/sim/ik_viz.cpp.s
+.PHONY : example/sim/ik_viz.s
+
+# target to generate assembly for a file
+example/sim/ik_viz.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik_viz.dir/build.make CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.s
+.PHONY : example/sim/ik_viz.cpp.s
+
+example/sim/traj_sim_circle.o: example/sim/traj_sim_circle.cpp.o
+.PHONY : example/sim/traj_sim_circle.o
+
+# target to build an object file
+example/sim/traj_sim_circle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_circle.dir/build.make CMakeFiles/traj_sim_circle.dir/example/sim/traj_sim_circle.cpp.o
+.PHONY : example/sim/traj_sim_circle.cpp.o
+
+example/sim/traj_sim_circle.i: example/sim/traj_sim_circle.cpp.i
+.PHONY : example/sim/traj_sim_circle.i
+
+# target to preprocess a source file
+example/sim/traj_sim_circle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_circle.dir/build.make CMakeFiles/traj_sim_circle.dir/example/sim/traj_sim_circle.cpp.i
+.PHONY : example/sim/traj_sim_circle.cpp.i
+
+example/sim/traj_sim_circle.s: example/sim/traj_sim_circle.cpp.s
+.PHONY : example/sim/traj_sim_circle.s
+
+# target to generate assembly for a file
+example/sim/traj_sim_circle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_circle.dir/build.make CMakeFiles/traj_sim_circle.dir/example/sim/traj_sim_circle.cpp.s
+.PHONY : example/sim/traj_sim_circle.cpp.s
+
+example/sim/traj_sim_cone.o: example/sim/traj_sim_cone.cpp.o
+.PHONY : example/sim/traj_sim_cone.o
+
+# target to build an object file
+example/sim/traj_sim_cone.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_cone.dir/build.make CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.o
+.PHONY : example/sim/traj_sim_cone.cpp.o
+
+example/sim/traj_sim_cone.i: example/sim/traj_sim_cone.cpp.i
+.PHONY : example/sim/traj_sim_cone.i
+
+# target to preprocess a source file
+example/sim/traj_sim_cone.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_cone.dir/build.make CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.i
+.PHONY : example/sim/traj_sim_cone.cpp.i
+
+example/sim/traj_sim_cone.s: example/sim/traj_sim_cone.cpp.s
+.PHONY : example/sim/traj_sim_cone.s
+
+# target to generate assembly for a file
+example/sim/traj_sim_cone.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_cone.dir/build.make CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.s
+.PHONY : example/sim/traj_sim_cone.cpp.s
+
+example/sim/traj_sim_geodesic.o: example/sim/traj_sim_geodesic.cpp.o
+.PHONY : example/sim/traj_sim_geodesic.o
+
+# target to build an object file
+example/sim/traj_sim_geodesic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_geodesic.dir/build.make CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o
+.PHONY : example/sim/traj_sim_geodesic.cpp.o
+
+example/sim/traj_sim_geodesic.i: example/sim/traj_sim_geodesic.cpp.i
+.PHONY : example/sim/traj_sim_geodesic.i
+
+# target to preprocess a source file
+example/sim/traj_sim_geodesic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_geodesic.dir/build.make CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.i
+.PHONY : example/sim/traj_sim_geodesic.cpp.i
+
+example/sim/traj_sim_geodesic.s: example/sim/traj_sim_geodesic.cpp.s
+.PHONY : example/sim/traj_sim_geodesic.s
+
+# target to generate assembly for a file
+example/sim/traj_sim_geodesic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_geodesic.dir/build.make CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.s
+.PHONY : example/sim/traj_sim_geodesic.cpp.s
 
 src/actuator/arm_actuator_group.o: src/actuator/arm_actuator_group.cpp.o
 .PHONY : src/actuator/arm_actuator_group.o
@@ -345,6 +525,30 @@ src/actuator/arm_actuator_group.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_actuator.dir/build.make CMakeFiles/rebot_actuator.dir/src/actuator/arm_actuator_group.cpp.s
 .PHONY : src/actuator/arm_actuator_group.cpp.s
 
+src/application/arm_controller.o: src/application/arm_controller.cpp.o
+.PHONY : src/application/arm_controller.o
+
+# target to build an object file
+src/application/arm_controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_application.dir/build.make CMakeFiles/rebot_application.dir/src/application/arm_controller.cpp.o
+.PHONY : src/application/arm_controller.cpp.o
+
+src/application/arm_controller.i: src/application/arm_controller.cpp.i
+.PHONY : src/application/arm_controller.i
+
+# target to preprocess a source file
+src/application/arm_controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_application.dir/build.make CMakeFiles/rebot_application.dir/src/application/arm_controller.cpp.i
+.PHONY : src/application/arm_controller.cpp.i
+
+src/application/arm_controller.s: src/application/arm_controller.cpp.s
+.PHONY : src/application/arm_controller.s
+
+# target to generate assembly for a file
+src/application/arm_controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_application.dir/build.make CMakeFiles/rebot_application.dir/src/application/arm_controller.cpp.s
+.PHONY : src/application/arm_controller.cpp.s
+
 src/dynamics/gravity_compensation.o: src/dynamics/gravity_compensation.cpp.o
 .PHONY : src/dynamics/gravity_compensation.o
 
@@ -368,30 +572,6 @@ src/dynamics/gravity_compensation.s: src/dynamics/gravity_compensation.cpp.s
 src/dynamics/gravity_compensation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_dynamics.dir/build.make CMakeFiles/rebot_dynamics.dir/src/dynamics/gravity_compensation.cpp.s
 .PHONY : src/dynamics/gravity_compensation.cpp.s
-
-src/kinematics/end_motion_stepper.o: src/kinematics/end_motion_stepper.cpp.o
-.PHONY : src/kinematics/end_motion_stepper.o
-
-# target to build an object file
-src/kinematics/end_motion_stepper.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_kinematics.dir/build.make CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o
-.PHONY : src/kinematics/end_motion_stepper.cpp.o
-
-src/kinematics/end_motion_stepper.i: src/kinematics/end_motion_stepper.cpp.i
-.PHONY : src/kinematics/end_motion_stepper.i
-
-# target to preprocess a source file
-src/kinematics/end_motion_stepper.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_kinematics.dir/build.make CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.i
-.PHONY : src/kinematics/end_motion_stepper.cpp.i
-
-src/kinematics/end_motion_stepper.s: src/kinematics/end_motion_stepper.cpp.s
-.PHONY : src/kinematics/end_motion_stepper.s
-
-# target to generate assembly for a file
-src/kinematics/end_motion_stepper.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_kinematics.dir/build.make CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.s
-.PHONY : src/kinematics/end_motion_stepper.cpp.s
 
 src/kinematics/forward_kinematics.o: src/kinematics/forward_kinematics.cpp.o
 .PHONY : src/kinematics/forward_kinematics.o
@@ -489,294 +669,6 @@ src/kinematics/trajectory_planner_geodesic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebot_kinematics.dir/build.make CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.s
 .PHONY : src/kinematics/trajectory_planner_geodesic.cpp.s
 
-test/arm_line_slide.o: test/arm_line_slide.cpp.o
-.PHONY : test/arm_line_slide.o
-
-# target to build an object file
-test/arm_line_slide.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/test/arm_line_slide.cpp.o
-.PHONY : test/arm_line_slide.cpp.o
-
-test/arm_line_slide.i: test/arm_line_slide.cpp.i
-.PHONY : test/arm_line_slide.i
-
-# target to preprocess a source file
-test/arm_line_slide.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/test/arm_line_slide.cpp.i
-.PHONY : test/arm_line_slide.cpp.i
-
-test/arm_line_slide.s: test/arm_line_slide.cpp.s
-.PHONY : test/arm_line_slide.s
-
-# target to generate assembly for a file
-test/arm_line_slide.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_line_slide.dir/build.make CMakeFiles/arm_line_slide.dir/test/arm_line_slide.cpp.s
-.PHONY : test/arm_line_slide.cpp.s
-
-test/arm_orient_swing.o: test/arm_orient_swing.cpp.o
-.PHONY : test/arm_orient_swing.o
-
-# target to build an object file
-test/arm_orient_swing.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/test/arm_orient_swing.cpp.o
-.PHONY : test/arm_orient_swing.cpp.o
-
-test/arm_orient_swing.i: test/arm_orient_swing.cpp.i
-.PHONY : test/arm_orient_swing.i
-
-# target to preprocess a source file
-test/arm_orient_swing.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/test/arm_orient_swing.cpp.i
-.PHONY : test/arm_orient_swing.cpp.i
-
-test/arm_orient_swing.s: test/arm_orient_swing.cpp.s
-.PHONY : test/arm_orient_swing.s
-
-# target to generate assembly for a file
-test/arm_orient_swing.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_orient_swing.dir/build.make CMakeFiles/arm_orient_swing.dir/test/arm_orient_swing.cpp.s
-.PHONY : test/arm_orient_swing.cpp.s
-
-test/arm_state_monitor.o: test/arm_state_monitor.cpp.o
-.PHONY : test/arm_state_monitor.o
-
-# target to build an object file
-test/arm_state_monitor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o
-.PHONY : test/arm_state_monitor.cpp.o
-
-test/arm_state_monitor.i: test/arm_state_monitor.cpp.i
-.PHONY : test/arm_state_monitor.i
-
-# target to preprocess a source file
-test/arm_state_monitor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.i
-.PHONY : test/arm_state_monitor.cpp.i
-
-test/arm_state_monitor.s: test/arm_state_monitor.cpp.s
-.PHONY : test/arm_state_monitor.s
-
-# target to generate assembly for a file
-test/arm_state_monitor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_state_monitor.dir/build.make CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.s
-.PHONY : test/arm_state_monitor.cpp.s
-
-test/arm_traj_ctrl.o: test/arm_traj_ctrl.cpp.o
-.PHONY : test/arm_traj_ctrl.o
-
-# target to build an object file
-test/arm_traj_ctrl.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o
-.PHONY : test/arm_traj_ctrl.cpp.o
-
-test/arm_traj_ctrl.i: test/arm_traj_ctrl.cpp.i
-.PHONY : test/arm_traj_ctrl.i
-
-# target to preprocess a source file
-test/arm_traj_ctrl.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.i
-.PHONY : test/arm_traj_ctrl.cpp.i
-
-test/arm_traj_ctrl.s: test/arm_traj_ctrl.cpp.s
-.PHONY : test/arm_traj_ctrl.s
-
-# target to generate assembly for a file
-test/arm_traj_ctrl.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_traj_ctrl.dir/build.make CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.s
-.PHONY : test/arm_traj_ctrl.cpp.s
-
-test/arm_web_ctrl.o: test/arm_web_ctrl.cpp.o
-.PHONY : test/arm_web_ctrl.o
-
-# target to build an object file
-test/arm_web_ctrl.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_web_ctrl.dir/build.make CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o
-.PHONY : test/arm_web_ctrl.cpp.o
-
-test/arm_web_ctrl.i: test/arm_web_ctrl.cpp.i
-.PHONY : test/arm_web_ctrl.i
-
-# target to preprocess a source file
-test/arm_web_ctrl.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_web_ctrl.dir/build.make CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.i
-.PHONY : test/arm_web_ctrl.cpp.i
-
-test/arm_web_ctrl.s: test/arm_web_ctrl.cpp.s
-.PHONY : test/arm_web_ctrl.s
-
-# target to generate assembly for a file
-test/arm_web_ctrl.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm_web_ctrl.dir/build.make CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.s
-.PHONY : test/arm_web_ctrl.cpp.s
-
-test/gravity_comp_test.o: test/gravity_comp_test.cpp.o
-.PHONY : test/gravity_comp_test.o
-
-# target to build an object file
-test/gravity_comp_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/test/gravity_comp_test.cpp.o
-.PHONY : test/gravity_comp_test.cpp.o
-
-test/gravity_comp_test.i: test/gravity_comp_test.cpp.i
-.PHONY : test/gravity_comp_test.i
-
-# target to preprocess a source file
-test/gravity_comp_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/test/gravity_comp_test.cpp.i
-.PHONY : test/gravity_comp_test.cpp.i
-
-test/gravity_comp_test.s: test/gravity_comp_test.cpp.s
-.PHONY : test/gravity_comp_test.s
-
-# target to generate assembly for a file
-test/gravity_comp_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gravity_comp_test.dir/build.make CMakeFiles/gravity_comp_test.dir/test/gravity_comp_test.cpp.s
-.PHONY : test/gravity_comp_test.cpp.s
-
-test/ik_viz.o: test/ik_viz.cpp.o
-.PHONY : test/ik_viz.o
-
-# target to build an object file
-test/ik_viz.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik_viz.dir/build.make CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o
-.PHONY : test/ik_viz.cpp.o
-
-test/ik_viz.i: test/ik_viz.cpp.i
-.PHONY : test/ik_viz.i
-
-# target to preprocess a source file
-test/ik_viz.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik_viz.dir/build.make CMakeFiles/ik_viz.dir/test/ik_viz.cpp.i
-.PHONY : test/ik_viz.cpp.i
-
-test/ik_viz.s: test/ik_viz.cpp.s
-.PHONY : test/ik_viz.s
-
-# target to generate assembly for a file
-test/ik_viz.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik_viz.dir/build.make CMakeFiles/ik_viz.dir/test/ik_viz.cpp.s
-.PHONY : test/ik_viz.cpp.s
-
-test/kinematics_test.o: test/kinematics_test.cpp.o
-.PHONY : test/kinematics_test.o
-
-# target to build an object file
-test/kinematics_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/kinematics_test.dir/build.make CMakeFiles/kinematics_test.dir/test/kinematics_test.cpp.o
-.PHONY : test/kinematics_test.cpp.o
-
-test/kinematics_test.i: test/kinematics_test.cpp.i
-.PHONY : test/kinematics_test.i
-
-# target to preprocess a source file
-test/kinematics_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/kinematics_test.dir/build.make CMakeFiles/kinematics_test.dir/test/kinematics_test.cpp.i
-.PHONY : test/kinematics_test.cpp.i
-
-test/kinematics_test.s: test/kinematics_test.cpp.s
-.PHONY : test/kinematics_test.s
-
-# target to generate assembly for a file
-test/kinematics_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/kinematics_test.dir/build.make CMakeFiles/kinematics_test.dir/test/kinematics_test.cpp.s
-.PHONY : test/kinematics_test.cpp.s
-
-test/traj_sim_circle.o: test/traj_sim_circle.cpp.o
-.PHONY : test/traj_sim_circle.o
-
-# target to build an object file
-test/traj_sim_circle.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_circle.dir/build.make CMakeFiles/traj_sim_circle.dir/test/traj_sim_circle.cpp.o
-.PHONY : test/traj_sim_circle.cpp.o
-
-test/traj_sim_circle.i: test/traj_sim_circle.cpp.i
-.PHONY : test/traj_sim_circle.i
-
-# target to preprocess a source file
-test/traj_sim_circle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_circle.dir/build.make CMakeFiles/traj_sim_circle.dir/test/traj_sim_circle.cpp.i
-.PHONY : test/traj_sim_circle.cpp.i
-
-test/traj_sim_circle.s: test/traj_sim_circle.cpp.s
-.PHONY : test/traj_sim_circle.s
-
-# target to generate assembly for a file
-test/traj_sim_circle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_circle.dir/build.make CMakeFiles/traj_sim_circle.dir/test/traj_sim_circle.cpp.s
-.PHONY : test/traj_sim_circle.cpp.s
-
-test/traj_sim_cone.o: test/traj_sim_cone.cpp.o
-.PHONY : test/traj_sim_cone.o
-
-# target to build an object file
-test/traj_sim_cone.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_cone.dir/build.make CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o
-.PHONY : test/traj_sim_cone.cpp.o
-
-test/traj_sim_cone.i: test/traj_sim_cone.cpp.i
-.PHONY : test/traj_sim_cone.i
-
-# target to preprocess a source file
-test/traj_sim_cone.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_cone.dir/build.make CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.i
-.PHONY : test/traj_sim_cone.cpp.i
-
-test/traj_sim_cone.s: test/traj_sim_cone.cpp.s
-.PHONY : test/traj_sim_cone.s
-
-# target to generate assembly for a file
-test/traj_sim_cone.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_cone.dir/build.make CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.s
-.PHONY : test/traj_sim_cone.cpp.s
-
-test/traj_sim_geodesic.o: test/traj_sim_geodesic.cpp.o
-.PHONY : test/traj_sim_geodesic.o
-
-# target to build an object file
-test/traj_sim_geodesic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_geodesic.dir/build.make CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o
-.PHONY : test/traj_sim_geodesic.cpp.o
-
-test/traj_sim_geodesic.i: test/traj_sim_geodesic.cpp.i
-.PHONY : test/traj_sim_geodesic.i
-
-# target to preprocess a source file
-test/traj_sim_geodesic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_geodesic.dir/build.make CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.i
-.PHONY : test/traj_sim_geodesic.cpp.i
-
-test/traj_sim_geodesic.s: test/traj_sim_geodesic.cpp.s
-.PHONY : test/traj_sim_geodesic.s
-
-# target to generate assembly for a file
-test/traj_sim_geodesic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_geodesic.dir/build.make CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.s
-.PHONY : test/traj_sim_geodesic.cpp.s
-
-test/traj_sim_stepper.o: test/traj_sim_stepper.cpp.o
-.PHONY : test/traj_sim_stepper.o
-
-# target to build an object file
-test/traj_sim_stepper.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_stepper.dir/build.make CMakeFiles/traj_sim_stepper.dir/test/traj_sim_stepper.cpp.o
-.PHONY : test/traj_sim_stepper.cpp.o
-
-test/traj_sim_stepper.i: test/traj_sim_stepper.cpp.i
-.PHONY : test/traj_sim_stepper.i
-
-# target to preprocess a source file
-test/traj_sim_stepper.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_stepper.dir/build.make CMakeFiles/traj_sim_stepper.dir/test/traj_sim_stepper.cpp.i
-.PHONY : test/traj_sim_stepper.cpp.i
-
-test/traj_sim_stepper.s: test/traj_sim_stepper.cpp.s
-.PHONY : test/traj_sim_stepper.s
-
-# target to generate assembly for a file
-test/traj_sim_stepper.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_sim_stepper.dir/build.make CMakeFiles/traj_sim_stepper.dir/test/traj_sim_stepper.cpp.s
-.PHONY : test/traj_sim_stepper.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -785,31 +677,55 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... arm_line_slide"
-	@echo "... arm_orient_swing"
 	@echo "... arm_state_monitor"
 	@echo "... arm_traj_ctrl"
+	@echo "... arm_traj_triangle"
 	@echo "... arm_web_ctrl"
-	@echo "... gravity_comp_test"
+	@echo "... gravity_comp_single_joint_test"
 	@echo "... ik_viz"
-	@echo "... kinematics_test"
 	@echo "... rebot_actuator"
+	@echo "... rebot_application"
 	@echo "... rebot_dynamics"
 	@echo "... rebot_kinematics"
 	@echo "... traj_sim_circle"
 	@echo "... traj_sim_cone"
 	@echo "... traj_sim_geodesic"
-	@echo "... traj_sim_stepper"
+	@echo "... example/real/arm_state_monitor.o"
+	@echo "... example/real/arm_state_monitor.i"
+	@echo "... example/real/arm_state_monitor.s"
+	@echo "... example/real/arm_traj_ctrl.o"
+	@echo "... example/real/arm_traj_ctrl.i"
+	@echo "... example/real/arm_traj_ctrl.s"
+	@echo "... example/real/arm_traj_triangle.o"
+	@echo "... example/real/arm_traj_triangle.i"
+	@echo "... example/real/arm_traj_triangle.s"
+	@echo "... example/real/arm_web_ctrl.o"
+	@echo "... example/real/arm_web_ctrl.i"
+	@echo "... example/real/arm_web_ctrl.s"
+	@echo "... example/real/gravity_comp_single_joint_test.o"
+	@echo "... example/real/gravity_comp_single_joint_test.i"
+	@echo "... example/real/gravity_comp_single_joint_test.s"
+	@echo "... example/sim/ik_viz.o"
+	@echo "... example/sim/ik_viz.i"
+	@echo "... example/sim/ik_viz.s"
+	@echo "... example/sim/traj_sim_circle.o"
+	@echo "... example/sim/traj_sim_circle.i"
+	@echo "... example/sim/traj_sim_circle.s"
+	@echo "... example/sim/traj_sim_cone.o"
+	@echo "... example/sim/traj_sim_cone.i"
+	@echo "... example/sim/traj_sim_cone.s"
+	@echo "... example/sim/traj_sim_geodesic.o"
+	@echo "... example/sim/traj_sim_geodesic.i"
+	@echo "... example/sim/traj_sim_geodesic.s"
 	@echo "... src/actuator/arm_actuator_group.o"
 	@echo "... src/actuator/arm_actuator_group.i"
 	@echo "... src/actuator/arm_actuator_group.s"
+	@echo "... src/application/arm_controller.o"
+	@echo "... src/application/arm_controller.i"
+	@echo "... src/application/arm_controller.s"
 	@echo "... src/dynamics/gravity_compensation.o"
 	@echo "... src/dynamics/gravity_compensation.i"
 	@echo "... src/dynamics/gravity_compensation.s"
-	@echo "... src/kinematics/end_motion_stepper.o"
-	@echo "... src/kinematics/end_motion_stepper.i"
-	@echo "... src/kinematics/end_motion_stepper.s"
 	@echo "... src/kinematics/forward_kinematics.o"
 	@echo "... src/kinematics/forward_kinematics.i"
 	@echo "... src/kinematics/forward_kinematics.s"
@@ -822,42 +738,6 @@ help:
 	@echo "... src/kinematics/trajectory_planner_geodesic.o"
 	@echo "... src/kinematics/trajectory_planner_geodesic.i"
 	@echo "... src/kinematics/trajectory_planner_geodesic.s"
-	@echo "... test/arm_line_slide.o"
-	@echo "... test/arm_line_slide.i"
-	@echo "... test/arm_line_slide.s"
-	@echo "... test/arm_orient_swing.o"
-	@echo "... test/arm_orient_swing.i"
-	@echo "... test/arm_orient_swing.s"
-	@echo "... test/arm_state_monitor.o"
-	@echo "... test/arm_state_monitor.i"
-	@echo "... test/arm_state_monitor.s"
-	@echo "... test/arm_traj_ctrl.o"
-	@echo "... test/arm_traj_ctrl.i"
-	@echo "... test/arm_traj_ctrl.s"
-	@echo "... test/arm_web_ctrl.o"
-	@echo "... test/arm_web_ctrl.i"
-	@echo "... test/arm_web_ctrl.s"
-	@echo "... test/gravity_comp_test.o"
-	@echo "... test/gravity_comp_test.i"
-	@echo "... test/gravity_comp_test.s"
-	@echo "... test/ik_viz.o"
-	@echo "... test/ik_viz.i"
-	@echo "... test/ik_viz.s"
-	@echo "... test/kinematics_test.o"
-	@echo "... test/kinematics_test.i"
-	@echo "... test/kinematics_test.s"
-	@echo "... test/traj_sim_circle.o"
-	@echo "... test/traj_sim_circle.i"
-	@echo "... test/traj_sim_circle.s"
-	@echo "... test/traj_sim_cone.o"
-	@echo "... test/traj_sim_cone.i"
-	@echo "... test/traj_sim_cone.s"
-	@echo "... test/traj_sim_geodesic.o"
-	@echo "... test/traj_sim_geodesic.i"
-	@echo "... test/traj_sim_geodesic.s"
-	@echo "... test/traj_sim_stepper.o"
-	@echo "... test/traj_sim_stepper.i"
-	@echo "... test/traj_sim_stepper.s"
 .PHONY : help
 
 

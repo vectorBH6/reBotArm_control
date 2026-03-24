@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o"
-  "CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o.d"
+  "CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o"
+  "CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o.d"
   "arm_state_monitor"
   "arm_state_monitor.pdb"
 )

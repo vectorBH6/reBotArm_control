@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o"
-  "CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o.d"
+  "CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o"
+  "CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o.d"
   "traj_sim_geodesic"
   "traj_sim_geodesic.pdb"
 )

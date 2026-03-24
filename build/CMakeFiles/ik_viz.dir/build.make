@@ -69,28 +69,28 @@ include CMakeFiles/ik_viz.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ik_viz.dir/flags.make
 
-CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o: CMakeFiles/ik_viz.dir/flags.make
-CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o: ../test/ik_viz.cpp
-CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o: CMakeFiles/ik_viz.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o -MF CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o.d -o CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o -c /home/rvector/reBot_control/test/ik_viz.cpp
+CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o: CMakeFiles/ik_viz.dir/flags.make
+CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o: ../example/sim/ik_viz.cpp
+CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o: CMakeFiles/ik_viz.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o -MF CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o.d -o CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o -c /home/rvector/reBot_control/example/sim/ik_viz.cpp
 
-CMakeFiles/ik_viz.dir/test/ik_viz.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ik_viz.dir/test/ik_viz.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/test/ik_viz.cpp > CMakeFiles/ik_viz.dir/test/ik_viz.cpp.i
+CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/example/sim/ik_viz.cpp > CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.i
 
-CMakeFiles/ik_viz.dir/test/ik_viz.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ik_viz.dir/test/ik_viz.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/test/ik_viz.cpp -o CMakeFiles/ik_viz.dir/test/ik_viz.cpp.s
+CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/example/sim/ik_viz.cpp -o CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.s
 
 # Object files for target ik_viz
 ik_viz_OBJECTS = \
-"CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o"
+"CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o"
 
 # External object files for target ik_viz
 ik_viz_EXTERNAL_OBJECTS =
 
-ik_viz: CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o
+ik_viz: CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o
 ik_viz: CMakeFiles/ik_viz.dir/build.make
 ik_viz: librebot_kinematics.a
 ik_viz: /home/rvector/pinocchio/build/src/libpinocchio_default.so

@@ -69,28 +69,28 @@ include CMakeFiles/traj_sim_geodesic.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/traj_sim_geodesic.dir/flags.make
 
-CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o: CMakeFiles/traj_sim_geodesic.dir/flags.make
-CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o: ../test/traj_sim_geodesic.cpp
-CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o: CMakeFiles/traj_sim_geodesic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o -MF CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o.d -o CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o -c /home/rvector/reBot_control/test/traj_sim_geodesic.cpp
+CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o: CMakeFiles/traj_sim_geodesic.dir/flags.make
+CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o: ../example/sim/traj_sim_geodesic.cpp
+CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o: CMakeFiles/traj_sim_geodesic.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o -MF CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o.d -o CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o -c /home/rvector/reBot_control/example/sim/traj_sim_geodesic.cpp
 
-CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/test/traj_sim_geodesic.cpp > CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.i
+CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/example/sim/traj_sim_geodesic.cpp > CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.i
 
-CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/test/traj_sim_geodesic.cpp -o CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.s
+CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/example/sim/traj_sim_geodesic.cpp -o CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.s
 
 # Object files for target traj_sim_geodesic
 traj_sim_geodesic_OBJECTS = \
-"CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o"
+"CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o"
 
 # External object files for target traj_sim_geodesic
 traj_sim_geodesic_EXTERNAL_OBJECTS =
 
-traj_sim_geodesic: CMakeFiles/traj_sim_geodesic.dir/test/traj_sim_geodesic.cpp.o
+traj_sim_geodesic: CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o
 traj_sim_geodesic: CMakeFiles/traj_sim_geodesic.dir/build.make
 traj_sim_geodesic: librebot_kinematics.a
 traj_sim_geodesic: /home/rvector/pinocchio/build/src/libpinocchio_default.so

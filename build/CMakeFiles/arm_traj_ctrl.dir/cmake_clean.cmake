@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o"
-  "CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o.d"
+  "CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o"
+  "CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o.d"
   "arm_traj_ctrl"
   "arm_traj_ctrl.pdb"
 )

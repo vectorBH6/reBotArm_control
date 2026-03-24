@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/rvector/reBot_control/include -I/home/rvector/pinocchio/include -I/home/rvector/pinocchio/build/include -I/usr/include/eigen3
 
-CXX_FLAGS = -O3 -DNDEBUG -std=gnu++17
+CXX_FLAGS = -std=gnu++17
 

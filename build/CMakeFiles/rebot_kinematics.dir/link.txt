@@ -1,2 +1,2 @@
-/usr/bin/ar qc librebot_kinematics.a CMakeFiles/rebot_kinematics.dir/src/kinematics/robot_model.cpp.o CMakeFiles/rebot_kinematics.dir/src/kinematics/forward_kinematics.cpp.o CMakeFiles/rebot_kinematics.dir/src/kinematics/inverse_kinematics.cpp.o CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o
+/usr/bin/ar qc librebot_kinematics.a CMakeFiles/rebot_kinematics.dir/src/kinematics/robot_model.cpp.o CMakeFiles/rebot_kinematics.dir/src/kinematics/forward_kinematics.cpp.o CMakeFiles/rebot_kinematics.dir/src/kinematics/inverse_kinematics.cpp.o CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o
 /usr/bin/ranlib librebot_kinematics.a

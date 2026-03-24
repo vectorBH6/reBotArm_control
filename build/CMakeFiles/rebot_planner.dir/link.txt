@@ -1,0 +1,2 @@
+/usr/bin/ar qc librebot_planner.a CMakeFiles/rebot_planner.dir/src/application/arm_planner.cpp.o
+/usr/bin/ranlib librebot_planner.a

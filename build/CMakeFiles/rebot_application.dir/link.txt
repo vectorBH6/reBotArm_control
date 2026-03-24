@@ -1,0 +1,2 @@
+/usr/bin/ar qc librebot_application.a CMakeFiles/rebot_application.dir/src/application/arm_controller.cpp.o
+/usr/bin/ranlib librebot_application.a

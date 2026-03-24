@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o"
-  "CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o.d"
   "CMakeFiles/rebot_kinematics.dir/src/kinematics/forward_kinematics.cpp.o"
   "CMakeFiles/rebot_kinematics.dir/src/kinematics/forward_kinematics.cpp.o.d"
   "CMakeFiles/rebot_kinematics.dir/src/kinematics/inverse_kinematics.cpp.o"

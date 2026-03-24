@@ -20,7 +20,6 @@ class CartesianTrajectory {
 public:
     CartesianTrajectory() = default;
     void addPoint(double t, const pinocchio::SE3& pose);
-    pinocchio::SE3 sample(double t) const;  // 相邻点间 LERP+SLERP 插值
     double duration() const;
     const std::vector<TrajectoryPoint>& points() const { return points_; }
     bool empty() const { return points_.empty(); }
@@ -63,15 +62,18 @@ CartesianTrajectory planCartesianGeodesicTrajectory(
     double                 duration,
     const TrajPlanParams&  params = TrajPlanParams{});
 
-/** 关节轨迹：测地线 + CLIK 跟踪，需 ik_params、null_gain */
+/** 关节轨迹：测地线 + CLIK 跟踪，需 ik_params、null_gain。
+ *  若外层已有 FK 结果，可通过 start_pose/end_pose 直接传入以避免重复计算。*/
 std::vector<JointTrajectoryPoint> planJointSpaceTrajectory(
-    RobotModel&            robot,
-    const Eigen::VectorXd& q_start,
-    const Eigen::VectorXd& q_end,
-    double                 duration,
-    const TrajPlanParams&  params = TrajPlanParams{},
-    const IKParams&        ik_params = IKParams{},
-    double                 null_gain = 0.1);
+    RobotModel&              robot,
+    const Eigen::VectorXd&   q_start,
+    const Eigen::VectorXd&   q_end,
+    double                   duration,
+    const TrajPlanParams&    params     = TrajPlanParams{},
+    const IKParams&          ik_params  = IKParams{},
+    double                   null_gain  = 0.1,
+    const pinocchio::SE3*    start_pose = nullptr,
+    const pinocchio::SE3*    end_pose   = nullptr);
 
 /** CLIK 跟踪笛卡尔轨迹，零空间规避关节限位 */
 std::vector<JointTrajectoryPoint> trackTrajectory(
@@ -80,10 +82,6 @@ std::vector<JointTrajectoryPoint> trackTrajectory(
     const Eigen::VectorXd&      q_init,
     const IKParams&             ik_params = IKParams{},
     double                      null_gain = 0.1);
-
-CartesianTrajectory jointTrajToCartesian(
-    RobotModel&                              robot,
-    const std::vector<JointTrajectoryPoint>& joint_traj);
 
 /** 统计 joint_traj 相对测地线 T_start→T_end 的误差 */
 TrajStats computeTrajStats(

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o"
-  "CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o.d"
+  "CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o"
+  "CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o.d"
   "arm_web_ctrl"
   "arm_web_ctrl.pdb"
 )

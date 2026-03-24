@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/kinematics_test.dir/test/kinematics_test.cpp.o -o kinematics_test  -Wl,-rpath,/home/rvector/pinocchio/build/src librebot_kinematics.a /home/rvector/pinocchio/build/src/libpinocchio_default.so /home/rvector/pinocchio/build/src/libpinocchio_parsers.so 

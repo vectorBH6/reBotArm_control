@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/arm_orient_swing_stepper.dir/test/arm_orient_swing_stepper.cpp.o -o arm_orient_swing_stepper  -Wl,-rpath,/home/rvector/pinocchio/build/src librebot_kinematics.a librebot_actuator.a /home/rvector/pinocchio/build/src/libpinocchio_default.so /home/rvector/pinocchio/build/src/libpinocchio_parsers.so /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0 

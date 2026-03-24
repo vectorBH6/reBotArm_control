@@ -1,1 +1,1 @@
-/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o -o ik_viz  -Wl,-rpath,/home/rvector/pinocchio/build/src librebot_kinematics.a /home/rvector/pinocchio/build/src/libpinocchio_default.so /home/rvector/pinocchio/build/src/libpinocchio_parsers.so 
+/usr/bin/c++ CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o -o ik_viz  -Wl,-rpath,/home/rvector/pinocchio/build/src librebot_kinematics.a /home/rvector/pinocchio/build/src/libpinocchio_default.so /home/rvector/pinocchio/build/src/libpinocchio_parsers.so 

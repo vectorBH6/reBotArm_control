@@ -111,24 +111,10 @@ CMakeFiles/rebot_kinematics.dir/src/kinematics/inverse_kinematics.cpp.s: cmake_f
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rebot_kinematics.dir/src/kinematics/inverse_kinematics.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/src/kinematics/inverse_kinematics.cpp -o CMakeFiles/rebot_kinematics.dir/src/kinematics/inverse_kinematics.cpp.s
 
-CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o: CMakeFiles/rebot_kinematics.dir/flags.make
-CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o: ../src/kinematics/end_motion_stepper.cpp
-CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o: CMakeFiles/rebot_kinematics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o -MF CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o.d -o CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o -c /home/rvector/reBot_control/src/kinematics/end_motion_stepper.cpp
-
-CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/src/kinematics/end_motion_stepper.cpp > CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.i
-
-CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/src/kinematics/end_motion_stepper.cpp -o CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.s
-
 CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o: CMakeFiles/rebot_kinematics.dir/flags.make
 CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o: ../src/kinematics/trajectory_planner_geodesic.cpp
 CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o: CMakeFiles/rebot_kinematics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o -MF CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o.d -o CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o -c /home/rvector/reBot_control/src/kinematics/trajectory_planner_geodesic.cpp
 
 CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.i: cmake_force
@@ -144,7 +130,6 @@ rebot_kinematics_OBJECTS = \
 "CMakeFiles/rebot_kinematics.dir/src/kinematics/robot_model.cpp.o" \
 "CMakeFiles/rebot_kinematics.dir/src/kinematics/forward_kinematics.cpp.o" \
 "CMakeFiles/rebot_kinematics.dir/src/kinematics/inverse_kinematics.cpp.o" \
-"CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o" \
 "CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o"
 
 # External object files for target rebot_kinematics
@@ -153,11 +138,10 @@ rebot_kinematics_EXTERNAL_OBJECTS =
 librebot_kinematics.a: CMakeFiles/rebot_kinematics.dir/src/kinematics/robot_model.cpp.o
 librebot_kinematics.a: CMakeFiles/rebot_kinematics.dir/src/kinematics/forward_kinematics.cpp.o
 librebot_kinematics.a: CMakeFiles/rebot_kinematics.dir/src/kinematics/inverse_kinematics.cpp.o
-librebot_kinematics.a: CMakeFiles/rebot_kinematics.dir/src/kinematics/end_motion_stepper.cpp.o
 librebot_kinematics.a: CMakeFiles/rebot_kinematics.dir/src/kinematics/trajectory_planner_geodesic.cpp.o
 librebot_kinematics.a: CMakeFiles/rebot_kinematics.dir/build.make
 librebot_kinematics.a: CMakeFiles/rebot_kinematics.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library librebot_kinematics.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library librebot_kinematics.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/rebot_kinematics.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rebot_kinematics.dir/link.txt --verbose=$(VERBOSE)
 
