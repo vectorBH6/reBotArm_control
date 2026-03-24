@@ -19,12 +19,6 @@ static pinocchio::SE3 se3Geodesic(const pinocchio::SE3& a, const pinocchio::SE3&
     return a * pinocchio::exp6(twist * s);
 }
 
-static pinocchio::SE3 se3Slerp(const pinocchio::SE3& a, const pinocchio::SE3& b, double s) {
-    Eigen::Vector3d t = (1.0 - s) * a.translation() + s * b.translation();
-    Eigen::Quaterniond qa(a.rotation()), qb(b.rotation());
-    if (qa.dot(qb) < 0) qb.coeffs() = -qb.coeffs();
-    return pinocchio::SE3(qa.slerp(s, qb).normalized().toRotationMatrix(), t);
-}
 
 static double applyProfile(double tau, TrajProfile profile, double accel_ratio) {
     tau = std::max(0.0, std::min(1.0, tau));
@@ -47,8 +41,8 @@ static double applyProfile(double tau, TrajProfile profile, double accel_ratio) 
 }
 
 static Eigen::VectorXd jointLimitGrad(const RobotModel& robot, const Eigen::VectorXd& q) {
-    const auto& lo = robot.model().lowerPositionLimit;
-    const auto& hi = robot.model().upperPositionLimit;
+    const auto& lo = robot.model.lowerPositionLimit;
+    const auto& hi = robot.model.upperPositionLimit;
     Eigen::VectorXd g = Eigen::VectorXd::Zero(robot.nv());
     for (int i = 0; i < robot.nv(); ++i) {
         if (!std::isfinite(lo[i]) || !std::isfinite(hi[i])) continue;
@@ -69,19 +63,6 @@ double CartesianTrajectory::duration() const {
     return points_.empty() ? 0.0 : points_.back().time;
 }
 
-pinocchio::SE3 CartesianTrajectory::sample(double t) const {
-    if (points_.empty()) throw std::runtime_error("CartesianTrajectory::sample: 空轨迹");
-    if (t <= points_.front().time) return points_.front().pose;
-    if (t >= points_.back().time)  return points_.back().pose;
-    int lo = 0, hi = static_cast<int>(points_.size()) - 1;
-    while (hi - lo > 1) {
-        int mid = (lo + hi) / 2;
-        (t < points_[mid].time ? hi : lo) = mid;
-    }
-    double dt = points_[hi].time - points_[lo].time;
-    double s  = (dt < 1e-12) ? 0.0 : (t - points_[lo].time) / dt;
-    return se3Slerp(points_[lo].pose, points_[hi].pose, s);
-}
 
 // ─── 测地线轨迹 ─────────────────────────────────────────────────────────────────
 
@@ -117,17 +98,17 @@ std::vector<JointTrajectoryPoint> trackTrajectory(RobotModel&                rob
     for (const auto& pt : traj.points()) {
         bool converged = false;
         for (int iter = 0; iter < ik_params.max_iter; ++iter) {
-            pinocchio::forwardKinematics(robot.model(), robot.data(), q);
-            pinocchio::updateFramePlacements(robot.model(), robot.data());
+            // computeJointJacobians 内部已调用 forwardKinematics，无需重复
+            pinocchio::computeJointJacobians(robot.model, robot.data, q);
+            pinocchio::updateFramePlacements(robot.model, robot.data);
             err = pinocchio::log6(
-                robot.data().oMf[robot.endFrameId()].inverse() * pt.pose).toVector();
+                robot.data.oMf[robot.end_frame_id].inverse() * pt.pose).toVector();
 
             if (err.norm() < ik_params.tolerance) { converged = true; break; }
 
-            pinocchio::computeJointJacobians(robot.model(), robot.data(), q);
             J.setZero();
-            pinocchio::getFrameJacobian(robot.model(), robot.data(),
-                robot.endFrameId(), pinocchio::LOCAL, J);
+            pinocchio::getFrameJacobian(robot.model, robot.data,
+                robot.end_frame_id, pinocchio::LOCAL, J);
 
             double lam = ik_params.damping / std::max(1.0, err.norm() * 10.0);
             Eigen::MatrixXd JJT = J * J.transpose();
@@ -139,7 +120,7 @@ std::vector<JointTrajectoryPoint> trackTrajectory(RobotModel&                rob
                 Eigen::VectorXd g = jointLimitGrad(robot, q);
                 dq += null_gain * (g - J.transpose() * ldlt.solve(J * g));
             }
-            q = robot.clampConfig(pinocchio::integrate(robot.model(), q, dq));
+            q = robot.clampConfig(pinocchio::integrate(robot.model, q, dq));
         }
         result.push_back({pt.time, q, converged});
     }
@@ -154,22 +135,17 @@ std::vector<JointTrajectoryPoint> planJointSpaceTrajectory(RobotModel&          
                                                           double                 duration,
                                                           const TrajPlanParams&  params,
                                                           const IKParams&        ik_params,
-                                                          double                 null_gain) {
+                                                          double                 null_gain,
+                                                          const pinocchio::SE3*  start_pose,
+                                                          const pinocchio::SE3*  end_pose) {
     if (duration <= 0.0)
         throw std::invalid_argument("planJointSpaceTrajectory: duration 必须 > 0");
-    CartesianTrajectory cart = planCartesianGeodesicTrajectory(
-        computeFK(robot, q_start), computeFK(robot, q_end), duration, params);
+    const pinocchio::SE3 T_start = start_pose ? *start_pose : computeFK(robot, q_start);
+    const pinocchio::SE3 T_end   = end_pose   ? *end_pose   : computeFK(robot, q_end);
+    CartesianTrajectory cart = planCartesianGeodesicTrajectory(T_start, T_end, duration, params);
     return trackTrajectory(robot, cart, q_start, ik_params, null_gain);
 }
 
-// ─── jointTrajToCartesian ───────────────────────────────────────────────────────
-
-CartesianTrajectory jointTrajToCartesian(RobotModel&                              robot,
-                                         const std::vector<JointTrajectoryPoint>& jt) {
-    CartesianTrajectory ct;
-    for (const auto& pt : jt) ct.addPoint(pt.time, computeFK(robot, pt.q));
-    return ct;
-}
 
 // ─── computeTrajStats ────────────────────────────────────────────────────────────
 

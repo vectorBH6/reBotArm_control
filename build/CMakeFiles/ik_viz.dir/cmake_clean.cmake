@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o"
-  "CMakeFiles/ik_viz.dir/test/ik_viz.cpp.o.d"
+  "CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o"
+  "CMakeFiles/ik_viz.dir/example/sim/ik_viz.cpp.o.d"
   "ik_viz"
   "ik_viz.pdb"
 )

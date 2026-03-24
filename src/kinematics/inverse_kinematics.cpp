@@ -1,5 +1,7 @@
 #include "kinematics/inverse_kinematics.h"
 
+#include <cmath>
+#include <random>
 #include <pinocchio/algorithm/kinematics.hpp>
 #include <pinocchio/algorithm/frames.hpp>
 #include <pinocchio/algorithm/jacobian.hpp>
@@ -12,9 +14,9 @@ namespace rebot {
 static double computeError(RobotModel& robot, const Eigen::VectorXd& q,
                             const pinocchio::SE3& target,
                             Eigen::Matrix<double, 6, 1>& err) {
-    pinocchio::forwardKinematics(robot.model(), robot.data(), q);
-    pinocchio::updateFramePlacements(robot.model(), robot.data());
-    const pinocchio::SE3& T_cur = robot.data().oMf[robot.endFrameId()];
+    pinocchio::forwardKinematics(robot.model, robot.data, q);
+    pinocchio::updateFramePlacements(robot.model, robot.data);
+    const pinocchio::SE3& T_cur = robot.data.oMf[robot.end_frame_id];
     err = pinocchio::log6(T_cur.inverse() * target).toVector();
     return err.norm();
 }
@@ -44,10 +46,10 @@ IKResult solveIK(RobotModel& robot, const pinocchio::SE3& target,
         }
 
         // LOCAL 系体雅可比
-        pinocchio::computeJointJacobians(robot.model(), robot.data(), q);
+        pinocchio::computeJointJacobians(robot.model, robot.data, q);
         J.setZero();
-        pinocchio::getFrameJacobian(robot.model(), robot.data(),
-                                    robot.endFrameId(), pinocchio::LOCAL, J);
+        pinocchio::getFrameJacobian(robot.model, robot.data,
+                                    robot.end_frame_id, pinocchio::LOCAL, J);
 
         // 自适应阻尼：用误差幅度决定 lambda，误差越大阻尼越小
         lambda = params.damping * std::max(1.0, prev_err * 10.0);
@@ -63,7 +65,7 @@ IKResult solveIK(RobotModel& robot, const pinocchio::SE3& target,
         double new_err;
         Eigen::Matrix<double, 6, 1> err_new;
         for (int ls = 0; ls < 4; ++ls) {
-            q_new   = robot.clampConfig(pinocchio::integrate(robot.model(), q, alpha * dq));
+            q_new   = robot.clampConfig(pinocchio::integrate(robot.model, q, alpha * dq));
             new_err = computeError(robot, q_new, target, err_new);
             if (new_err < prev_err) break;
             alpha *= 0.5;
@@ -77,6 +79,35 @@ IKResult solveIK(RobotModel& robot, const pinocchio::SE3& target,
     result.q     = q;
     result.error = prev_err;
     return result;
+}
+
+IKResult solveIKWithRetry(RobotModel& robot, const pinocchio::SE3& target,
+                          Eigen::VectorXd& q_seed, const IKParams& params,
+                          int max_retries) {
+    IKResult best = solveIK(robot, target, q_seed, params);
+    if (best.success) {
+        q_seed = best.q;
+        return best;
+    }
+
+    static std::mt19937 rng(42);
+    const auto& lo = robot.model.lowerPositionLimit;
+    const auto& hi = robot.model.upperPositionLimit;
+    const int nq   = robot.nq();
+
+    for (int retry = 0; retry < max_retries && !best.success; ++retry) {
+        Eigen::VectorXd q_rand(nq);
+        for (int j = 0; j < nq; ++j) {
+            const double l = std::isfinite(lo[j]) ? lo[j] : -M_PI;
+            const double h = std::isfinite(hi[j]) ? hi[j] :  M_PI;
+            q_rand[j] = std::uniform_real_distribution<double>(l, h)(rng);
+        }
+        IKResult r = solveIK(robot, target, q_rand, params);
+        if (r.error < best.error) best = r;
+    }
+
+    q_seed = best.q;
+    return best;
 }
 
 } // namespace rebot

@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/gravity_comp_test.dir/test/gravity_comp_test.cpp.o -o gravity_comp_test  -Wl,-rpath,/home/rvector/pinocchio/build/src librebot_dynamics.a librebot_actuator.a librebot_kinematics.a /home/rvector/pinocchio/build/src/libpinocchio_default.so /home/rvector/pinocchio/build/src/libpinocchio_parsers.so /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0 

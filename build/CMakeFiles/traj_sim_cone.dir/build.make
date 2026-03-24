@@ -69,28 +69,28 @@ include CMakeFiles/traj_sim_cone.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/traj_sim_cone.dir/flags.make
 
-CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: CMakeFiles/traj_sim_cone.dir/flags.make
-CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: ../test/traj_sim_cone.cpp
-CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o: CMakeFiles/traj_sim_cone.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o -MF CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o.d -o CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o -c /home/rvector/reBot_control/test/traj_sim_cone.cpp
+CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.o: CMakeFiles/traj_sim_cone.dir/flags.make
+CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.o: ../example/sim/traj_sim_cone.cpp
+CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.o: CMakeFiles/traj_sim_cone.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.o -MF CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.o.d -o CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.o -c /home/rvector/reBot_control/example/sim/traj_sim_cone.cpp
 
-CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/test/traj_sim_cone.cpp > CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.i
+CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/example/sim/traj_sim_cone.cpp > CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.i
 
-CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/test/traj_sim_cone.cpp -o CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.s
+CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/example/sim/traj_sim_cone.cpp -o CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.s
 
 # Object files for target traj_sim_cone
 traj_sim_cone_OBJECTS = \
-"CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o"
+"CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.o"
 
 # External object files for target traj_sim_cone
 traj_sim_cone_EXTERNAL_OBJECTS =
 
-traj_sim_cone: CMakeFiles/traj_sim_cone.dir/test/traj_sim_cone.cpp.o
+traj_sim_cone: CMakeFiles/traj_sim_cone.dir/example/sim/traj_sim_cone.cpp.o
 traj_sim_cone: CMakeFiles/traj_sim_cone.dir/build.make
 traj_sim_cone: librebot_kinematics.a
 traj_sim_cone: /home/rvector/pinocchio/build/src/libpinocchio_default.so

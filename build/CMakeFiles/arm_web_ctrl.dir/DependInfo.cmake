@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/rvector/reBot_control/test/arm_web_ctrl.cpp" "CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o" "gcc" "CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o.d"
+  "/home/rvector/reBot_control/example/real/arm_web_ctrl.cpp" "CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o" "gcc" "CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o.d"
   )
 
 # Targets to which this target links.

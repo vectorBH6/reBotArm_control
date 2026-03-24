@@ -69,28 +69,28 @@ include CMakeFiles/arm_web_ctrl.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/arm_web_ctrl.dir/flags.make
 
-CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o: CMakeFiles/arm_web_ctrl.dir/flags.make
-CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o: ../test/arm_web_ctrl.cpp
-CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o: CMakeFiles/arm_web_ctrl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o -MF CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o.d -o CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o -c /home/rvector/reBot_control/test/arm_web_ctrl.cpp
+CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o: CMakeFiles/arm_web_ctrl.dir/flags.make
+CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o: ../example/real/arm_web_ctrl.cpp
+CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o: CMakeFiles/arm_web_ctrl.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o -MF CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o.d -o CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o -c /home/rvector/reBot_control/example/real/arm_web_ctrl.cpp
 
-CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/test/arm_web_ctrl.cpp > CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.i
+CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/example/real/arm_web_ctrl.cpp > CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.i
 
-CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/test/arm_web_ctrl.cpp -o CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.s
+CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/example/real/arm_web_ctrl.cpp -o CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.s
 
 # Object files for target arm_web_ctrl
 arm_web_ctrl_OBJECTS = \
-"CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o"
+"CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o"
 
 # External object files for target arm_web_ctrl
 arm_web_ctrl_EXTERNAL_OBJECTS =
 
-arm_web_ctrl: CMakeFiles/arm_web_ctrl.dir/test/arm_web_ctrl.cpp.o
+arm_web_ctrl: CMakeFiles/arm_web_ctrl.dir/example/real/arm_web_ctrl.cpp.o
 arm_web_ctrl: CMakeFiles/arm_web_ctrl.dir/build.make
 arm_web_ctrl: librebot_actuator.a
 arm_web_ctrl: /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0

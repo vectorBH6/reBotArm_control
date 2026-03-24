@@ -69,33 +69,34 @@ include CMakeFiles/arm_traj_ctrl.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/arm_traj_ctrl.dir/flags.make
 
-CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o: CMakeFiles/arm_traj_ctrl.dir/flags.make
-CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o: ../test/arm_traj_ctrl.cpp
-CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o: CMakeFiles/arm_traj_ctrl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o -MF CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o.d -o CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o -c /home/rvector/reBot_control/test/arm_traj_ctrl.cpp
+CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o: CMakeFiles/arm_traj_ctrl.dir/flags.make
+CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o: ../example/real/arm_traj_ctrl.cpp
+CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o: CMakeFiles/arm_traj_ctrl.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o -MF CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o.d -o CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o -c /home/rvector/reBot_control/example/real/arm_traj_ctrl.cpp
 
-CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/test/arm_traj_ctrl.cpp > CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.i
+CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/example/real/arm_traj_ctrl.cpp > CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.i
 
-CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/test/arm_traj_ctrl.cpp -o CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.s
+CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/example/real/arm_traj_ctrl.cpp -o CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.s
 
 # Object files for target arm_traj_ctrl
 arm_traj_ctrl_OBJECTS = \
-"CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o"
+"CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o"
 
 # External object files for target arm_traj_ctrl
 arm_traj_ctrl_EXTERNAL_OBJECTS =
 
-arm_traj_ctrl: CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o
+arm_traj_ctrl: CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o
 arm_traj_ctrl: CMakeFiles/arm_traj_ctrl.dir/build.make
+arm_traj_ctrl: librebot_application.a
 arm_traj_ctrl: librebot_kinematics.a
-arm_traj_ctrl: librebot_actuator.a
 arm_traj_ctrl: /home/rvector/pinocchio/build/src/libpinocchio_default.so
 arm_traj_ctrl: /home/rvector/pinocchio/build/src/libpinocchio_parsers.so
+arm_traj_ctrl: librebot_actuator.a
 arm_traj_ctrl: /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0
 arm_traj_ctrl: CMakeFiles/arm_traj_ctrl.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable arm_traj_ctrl"

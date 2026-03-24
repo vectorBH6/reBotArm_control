@@ -8,11 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/rvector/reBot_control/test/arm_traj_ctrl.cpp" "CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o" "gcc" "CMakeFiles/arm_traj_ctrl.dir/test/arm_traj_ctrl.cpp.o.d"
+  "/home/rvector/reBot_control/example/real/arm_traj_ctrl.cpp" "CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o" "gcc" "CMakeFiles/arm_traj_ctrl.dir/example/real/arm_traj_ctrl.cpp.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/rvector/reBot_control/build/CMakeFiles/rebot_application.dir/DependInfo.cmake"
   "/home/rvector/reBot_control/build/CMakeFiles/rebot_kinematics.dir/DependInfo.cmake"
   "/home/rvector/reBot_control/build/CMakeFiles/rebot_actuator.dir/DependInfo.cmake"
   )

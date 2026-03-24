@@ -1,0 +1,82 @@
+# reBot 机械臂关节电机配置
+#
+# 字段说明：
+#   name               : 关节名称（唯一标识，代码中通过 arm["joint1"] 访问）
+#   type               : 电机型号，支持的值：
+#                          DM4310 / DM4310_48V / DM4340 / DM4340_48V
+#                          DM6006 / DM6248P / DM8006 / DM8009
+#                          DM10010L / DM10010 / DMH3510 / DMH6215 / DMG6220 / DMJH11
+#   slave_id           : 电机 CAN ID（ESC_ID），十六进制
+#   master_id          : 主机 CAN ID（MST_ID），十六进制
+#   ctrl_mode          : 控制模式（可选，默认 MIT）
+#                          MIT         — 阻抗控制，τ = kp*(q_des-q) + kd*(dq_des-dq)，参数取 mit_kp / mit_kd
+#                          POS_VEL     — 位置串级模式（位置环→速度环→电流环），
+#                                        p_des 为目标角度，速度上限取 pos_vel_speed
+#                          VEL         — 纯速度模式
+#   pos_vel_speed      : POS_VEL 模式下的速度上限 [rad/s]，须为正值（可选，默认 5.0）
+#   mit_kp / mit_kd    : MIT 阻抗控制位置/速度增益（MIT 模式时使用）
+#
+# 新增电机：在 joints 列表末尾追加一行即可，无需修改任何 C++ 代码。
+# 切换控制模式：修改对应关节的 ctrl_mode 字段，重启程序即可生效。
+
+joints:
+  - name:      joint1
+    type:      DM4340
+    slave_id:  0x01
+    master_id: 0x11
+    ctrl_mode:     POS_VEL
+    pos_vel_speed: 5.0
+    mit_kp:    18.0
+    mit_kd:    2.0
+
+  - name:      joint2
+    type:      DM4340
+    slave_id:  0x02
+    master_id: 0x12
+    ctrl_mode:     POS_VEL
+    pos_vel_speed: 5.0
+    mit_kp:    70.0
+    mit_kd:    5.0
+
+  - name:      joint3
+    type:      DM4340
+    slave_id:  0x03
+    master_id: 0x13
+    ctrl_mode:     POS_VEL
+    pos_vel_speed: 5.0
+    mit_kp:    140.0
+    mit_kd:    8.0
+
+  - name:      joint4
+    type:      DM4310
+    slave_id:  0x04
+    master_id: 0x14
+    ctrl_mode:     POS_VEL
+    pos_vel_speed: 3.5
+    mit_kp:    18.0
+    mit_kd:    2.0
+
+  - name:      joint5
+    type:      DM4310
+    slave_id:  0x05
+    master_id: 0x15
+    ctrl_mode:     POS_VEL
+    pos_vel_speed: 3.5
+    mit_kp:    18.0
+    mit_kd:    2.0
+
+  - name:      joint6
+    type:      DM4310
+    slave_id:  0x06
+    master_id: 0x16
+    ctrl_mode:     POS_VEL
+    pos_vel_speed: 3.5
+    mit_kp:    18.0
+    mit_kd:    2.0
+
+  - name:      joint7
+    type:      DM4310
+    slave_id:  0x07
+    master_id: 0x17
+    mit_kp:    18.0
+    mit_kd:    2.0

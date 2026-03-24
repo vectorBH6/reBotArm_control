@@ -69,33 +69,34 @@ include CMakeFiles/arm_state_monitor.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/arm_state_monitor.dir/flags.make
 
-CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o: CMakeFiles/arm_state_monitor.dir/flags.make
-CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o: ../test/arm_state_monitor.cpp
-CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o: CMakeFiles/arm_state_monitor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o -MF CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o.d -o CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o -c /home/rvector/reBot_control/test/arm_state_monitor.cpp
+CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o: CMakeFiles/arm_state_monitor.dir/flags.make
+CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o: ../example/real/arm_state_monitor.cpp
+CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o: CMakeFiles/arm_state_monitor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o -MF CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o.d -o CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o -c /home/rvector/reBot_control/example/real/arm_state_monitor.cpp
 
-CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/test/arm_state_monitor.cpp > CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.i
+CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rvector/reBot_control/example/real/arm_state_monitor.cpp > CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.i
 
-CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/test/arm_state_monitor.cpp -o CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.s
+CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rvector/reBot_control/example/real/arm_state_monitor.cpp -o CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.s
 
 # Object files for target arm_state_monitor
 arm_state_monitor_OBJECTS = \
-"CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o"
+"CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o"
 
 # External object files for target arm_state_monitor
 arm_state_monitor_EXTERNAL_OBJECTS =
 
-arm_state_monitor: CMakeFiles/arm_state_monitor.dir/test/arm_state_monitor.cpp.o
+arm_state_monitor: CMakeFiles/arm_state_monitor.dir/example/real/arm_state_monitor.cpp.o
 arm_state_monitor: CMakeFiles/arm_state_monitor.dir/build.make
+arm_state_monitor: librebot_application.a
 arm_state_monitor: librebot_kinematics.a
-arm_state_monitor: librebot_actuator.a
 arm_state_monitor: /home/rvector/pinocchio/build/src/libpinocchio_default.so
 arm_state_monitor: /home/rvector/pinocchio/build/src/libpinocchio_parsers.so
+arm_state_monitor: librebot_actuator.a
 arm_state_monitor: /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0
 arm_state_monitor: CMakeFiles/arm_state_monitor.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rvector/reBot_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable arm_state_monitor"
