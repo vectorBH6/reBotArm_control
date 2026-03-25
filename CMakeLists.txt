@@ -5,34 +5,37 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ─── 路径配置 ──────────────────────────────────────────────────────────────────
-if(NOT PINOCCHIO_ROOT)
-  if(DEFINED ENV{PINOCCHIO_ROOT} AND NOT "$ENV{PINOCCHIO_ROOT}" STREQUAL "")
-    set(PINOCCHIO_ROOT "$ENV{PINOCCHIO_ROOT}")
-  endif()
-endif()
-set(PINOCCHIO_ROOT "${PINOCCHIO_ROOT}" CACHE PATH "Pinocchio 根目录（含 include 与 build）")
-if(NOT PINOCCHIO_ROOT)
-  message(FATAL_ERROR "未设置 PINOCCHIO_ROOT：请 cmake -DPINOCCHIO_ROOT=... 或 export PINOCCHIO_ROOT")
-endif()
-set(PINOCCHIO_BUILD ${PINOCCHIO_ROOT}/build)
-set(URDF_PATH       "${CMAKE_SOURCE_DIR}/urdf/reBot-DevArm_fixend_description/urdf/reBot-DevArm_fixend.urdf")
+# robotpkg 默认安装路径
+set(OPENROBOTS_ROOT "/opt/openrobots" CACHE PATH "robotpkg 安装根目录")
 
-# ─── 依赖 ──────────────────────────────────────────────────────────────────────
+# Pinocchio 通过 robotpkg 安装，使用 pkg-config 查找
+list(APPEND CMAKE_PREFIX_PATH ${OPENROBOTS_ROOT})
+set(PKG_CONFIG_USE_CMAKE_PREFIX_PATH TRUE)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(PINOCCHIO REQUIRED pinocchio)
+
 find_package(Eigen3 REQUIRED)
-find_package(yaml-cpp REQUIRED)
+
+# yaml-cpp 手动配置（robotpkg 安装，无 cmake/pkg-config 配置）
+find_path(YAML_CPP_INCLUDE_DIR NAMES yaml-cpp/yaml.h PATHS ${OPENROBOTS_ROOT}/include)
+find_library(YAML_CPP_LIBRARY NAMES yaml-cpp PATHS ${OPENROBOTS_ROOT}/lib)
+
+set(URDF_PATH "${CMAKE_SOURCE_DIR}/urdf/reBot-DevArm_fixend_description/urdf/reBot-DevArm_fixend.urdf")
 
 set(PIN_INCLUDES
-    ${PINOCCHIO_ROOT}/include
-    ${PINOCCHIO_BUILD}/include
+    ${PINOCCHIO_INCLUDE_DIRS}
     ${EIGEN3_INCLUDE_DIR}
 )
 set(PIN_LIBS
-    ${PINOCCHIO_BUILD}/src/libpinocchio_default.so
-    ${PINOCCHIO_BUILD}/src/libpinocchio_parsers.so
+    ${PINOCCHIO_LIBRARIES}
 )
-set(PIN_RPATH ${PINOCCHIO_BUILD}/src)
+set(PIN_RPATH ${OPENROBOTS_ROOT}/lib)
 
-set(PYTHON_BIN "/home/rvector/anaconda3/envs/pinocchio/bin/python3")
+# 添加 robotpkg 库路径
+link_directories(${OPENROBOTS_ROOT}/lib)
+
+set(PYTHON_BIN "${CMAKE_SOURCE_DIR}/.venv/bin/python")
 
 # ─── 仿真 example 辅助函数（只链 rebot_kinematics，不链 rebot_application）────
 function(add_sim_viz_exe _name)
@@ -75,8 +78,8 @@ set_target_properties(rebot_kinematics PROPERTIES
 add_library(rebot_actuator STATIC
     src/actuator/arm_actuator_group.cpp
 )
-target_include_directories(rebot_actuator PUBLIC ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(rebot_actuator PUBLIC yaml-cpp)
+target_include_directories(rebot_actuator PUBLIC ${CMAKE_SOURCE_DIR}/include ${YAML_CPP_INCLUDE_DIR})
+target_link_libraries(rebot_actuator PUBLIC ${YAML_CPP_LIBRARY})
 
 # ─── 动力学库 ──────────────────────────────────────────────────────────────────
 add_library(rebot_dynamics
