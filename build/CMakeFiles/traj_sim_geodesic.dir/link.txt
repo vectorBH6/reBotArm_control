@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/traj_sim_geodesic.dir/example/sim/traj_sim_geodesic.cpp.o -o traj_sim_geodesic  -Wl,-rpath,/home/rvector/pinocchio/build/src librebot_kinematics.a /home/rvector/pinocchio/build/src/libpinocchio_default.so /home/rvector/pinocchio/build/src/libpinocchio_parsers.so 

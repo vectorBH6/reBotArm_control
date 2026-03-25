@@ -1,2 +1,0 @@
-/usr/bin/ar qc librebot_actuator.a CMakeFiles/rebot_actuator.dir/src/actuator/arm_actuator_group.cpp.o
-/usr/bin/ranlib librebot_actuator.a
