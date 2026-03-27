@@ -2,7 +2,12 @@
  * arm_traj_ctrl — 实机测地线轨迹交互控制
  *
  * 终端输入末端目标 "x y z [roll pitch yaw(rad)]"，确认后执行；Ctrl+C 回零退出。
+ *
  * 使用: sudo ./arm_traj_ctrl [串口] [YAML] [URDF]
+ *
+ * 轨迹规划算法（se3Geodesic 测地线插值 + CLIK 跟踪）：
+ *   - 测地线：SE(3) 空间最短路径插值，姿态平滑
+ *   - CLIK：阻尼最小二乘逆运动学，带零空间关节限位规避
  */
 
 #include "application/arm_controller.h"
@@ -10,8 +15,10 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <chrono>
 
 using rebot::ArmController;
+using namespace std::chrono;
 
 static ArmController arm_ctrl;
 
@@ -55,14 +62,17 @@ int main(int argc, char* argv[])
         if (!std::getline(std::cin, yn)) break;
         if (yn.empty() || (yn[0] != 'y' && yn[0] != 'Y')) { printf("已取消\n\n"); continue; }
 
+        // 测地线轨迹规划 + CLIK 跟踪
+        auto start_time = high_resolution_clock::now();
         if (!arm_ctrl.move_to_geodesic(ArmController::pose(x, y, z, ro, pi, ya))) {
-            fprintf(stderr, "IK 或规划失败\n\n");
+            fprintf(stderr, "[错误] IK 或轨迹规划失败\n\n");
             continue;
         }
+        auto end_time = high_resolution_clock::now();
+        double duration = duration_cast<milliseconds>(end_time - start_time).count() / 1000.0;
 
-        arm_ctrl.refresh_hw();
         print_pose("到达", arm_ctrl.fk());
-        printf("\n");
+        printf("[轨迹] 耗时: %.2f 秒\n\n", duration);
     }
 
     arm_ctrl.shutdown();

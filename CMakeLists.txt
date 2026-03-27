@@ -3,6 +3,7 @@ project(reBot_control)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # ─── 路径配置 ──────────────────────────────────────────────────────────────────
 if(NOT PINOCCHIO_ROOT)
@@ -135,6 +136,28 @@ target_compile_definitions(gravity_comp_single_joint_test PRIVATE URDF_PATH="${U
 set_target_properties(gravity_comp_single_joint_test PROPERTIES
     BUILD_RPATH  "${PIN_RPATH}"
     INSTALL_RPATH "${PIN_RPATH}"
+)
+
+# ─── Python 绑定（pybind11）────────────────────────────────────────────────────
+set(PYBIND11_PYTHON_VERSION 3.10)
+set(pybind11_DIR "/home/rvector/anaconda3/envs/pinocchio/lib/python3.10/site-packages/pybind11/share/cmake/pybind11")
+find_package(pybind11 REQUIRED)
+
+pybind11_add_module(rebot_py bindings/rebot_py.cpp)
+target_link_libraries(rebot_py PRIVATE
+    rebot_application
+    rebot_kinematics
+    rebot_dynamics
+)
+target_include_directories(rebot_py PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
+    ${PIN_INCLUDES}
+)
+target_compile_definitions(rebot_py PRIVATE URDF_PATH="${URDF_PATH}")
+set_target_properties(rebot_py PROPERTIES
+    BUILD_RPATH  "${PIN_RPATH}"
+    INSTALL_RPATH "${PIN_RPATH}"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
 )
 
 # ─── example/sim：仿真 / 可视化（只链 rebot_kinematics）──────────────────────

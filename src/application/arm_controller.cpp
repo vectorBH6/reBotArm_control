@@ -82,7 +82,7 @@ bool ArmController::init_impl_(const std::string& dev,
         return true;
     }
 
-    // 3b. 正常模式：扫描连接 → 使能 → 同步 q → 启动控制循环
+    // 3b. 正常模式：扫描连接 → 使能 → 同步 q → 初始化步进器 → 启动控制循环
     monitor_only_ = false;
     auto connected = arm_->scan_connectivity();
     for (int i = 0; i < N; ++i)
@@ -214,76 +214,85 @@ std::vector<JointTrajectoryPoint> ArmController::plan_geodesic_(
                                     &T_cur, &T_end);
 }
 
-// 多点测地线规划：依次规划各段，q 滚动推进，结果写入 out_segs
-bool ArmController::plan_geodesic_multi_(
-    const std::vector<pinocchio::SE3>&              poses,
-    std::vector<std::vector<JointTrajectoryPoint>>& out_segs,
-    double                                          segment_dur)
-{
-    out_segs.clear();
-    out_segs.reserve(poses.size());
-
-    Eigen::VectorXd q_cur  = q;
-    pinocchio::SE3  T_cur  = computeFK(robot, q_cur);
-
-    for (const auto& target : poses) {
-        IKResult ik = solveIK(robot, target, q_cur, ik_params);
-        if (!ik.success) return false;
-
-        const pinocchio::SE3 T_end = computeFK(robot, ik.q);
-        auto seg = planJointSpaceTrajectory(robot, q_cur, ik.q, segment_dur,
-                                            plan_params, ik_params, 0.1,
-                                            &T_cur, &T_end);
-        if (!seg.empty()) {
-            q_cur = seg.back().q;
-            T_cur = T_end;
-        }
-        out_segs.push_back(std::move(seg));
-    }
-    q = q_cur;
-    return true;
-}
-
 // ─── 实机执行 ─────────────────────────────────────────────────────────────────
 
+// 测地线轨迹规划 + CLIK 跟踪
 bool ArmController::move_to_geodesic(const pinocchio::SE3& target)
 {
     if (!inited_) return false;
-    auto traj = plan_geodesic_(target);
+
+    // 从硬件同步当前位置
+    sync_q_();
+
+    IKResult ik = solveIK(robot, target, q, ik_params);
+    if (!ik.success) return false;
+
+    const pinocchio::SE3 T_cur = computeFK(robot, q);
+    const pinocchio::SE3 T_end = computeFK(robot, ik.q);
+
+    double duration = std::max(1.0,
+        (target.translation() - T_cur.translation()).norm() / LINEAR_SPEED);
+
+    auto traj = planJointSpaceTrajectory(robot, q, ik.q, duration,
+                                        plan_params, ik_params, 0.1,
+                                        &T_cur, &T_end);
     if (traj.empty()) return false;
+
     run_trajectory_(traj, true);
     q = traj.back().q;
     return true;
 }
 
+// 纯 IK 直连：求解一次 IK 后直接下发关节角，无轨迹插值
 bool ArmController::move_to_ik(const pinocchio::SE3& target)
 {
     if (!inited_) return false;
+
+    sync_q_();
+
     IKResult ik = solveIK(robot, target, q, ik_params);
     if (!ik.success) return false;
+
+    apply_q_to_targets_(ik.q);
     q = ik.q;
-    apply_q_to_targets_(q);
     return true;
 }
 
+// 多点测地线规划 + 逐段执行：每段执行前重新从硬件读取当前位置，避免误差累积
 bool ArmController::move_through_geodesic(const std::vector<pinocchio::SE3>& poses)
 {
     if (!inited_) return false;
     if (poses.empty()) return true;
     if (poses.size() == 1) return move_to_geodesic(poses[0]);
 
-    std::vector<std::vector<JointTrajectoryPoint>> segs;
-    Eigen::VectorXd q_save = q;
+    // 依次规划并执行，每段开始前从硬件同步当前位置
+    for (size_t i = 0; i < poses.size() && running_; ++i) {
+        // 从硬件读取当前实际关节角，用实际位置规划下一段
+        sync_q_();
+        const auto& target = poses[i];
 
-    if (!plan_geodesic_multi_(poses, segs)) {
-        q = q_save;
-        return false;
-    }
+        IKResult ik = solveIK(robot, target, q, ik_params);
+        if (!ik.success) {
+            fprintf(stderr, "[规划] 第 %zu 点 IK 失败\n", i + 1);
+            return false;
+        }
 
-    q = q_save;
-    for (size_t i = 0; i < segs.size() && running_; ++i) {
-        run_trajectory_(segs[i], true);
-        if (!segs[i].empty()) q = segs[i].back().q;
+        const pinocchio::SE3 T_cur = computeFK(robot, q);
+        const pinocchio::SE3 T_end = computeFK(robot, ik.q);
+
+        double duration = std::max(1.0,
+            (target.translation() - T_cur.translation()).norm() / LINEAR_SPEED);
+
+        auto seg = planJointSpaceTrajectory(robot, q, ik.q, duration,
+                                            plan_params, ik_params, 0.1,
+                                            &T_cur, &T_end);
+        if (seg.empty()) {
+            fprintf(stderr, "[规划] 第 %zu 段轨迹生成失败\n", i + 1);
+            return false;
+        }
+
+        run_trajectory_(seg, true);
+        q = seg.back().q;  // 更新 q 供下次规划使用
     }
     return true;
 }

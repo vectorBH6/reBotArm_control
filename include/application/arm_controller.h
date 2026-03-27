@@ -55,10 +55,10 @@ public:
 
     // ── 状态（可直接读写）────────────────────────────────────────────────────
 
-    RobotModel      robot;       // pinocchio 模型与数据，可直接访问 robot.model / robot.data
+    RobotModel      robot;       // pinocchio 模型与数据
     Eigen::VectorXd q;           // 当前关节角 [rad]
-    IKParams        ik_params;   // IK 参数：max_iter / tolerance / step_size / damping
-    TrajPlanParams  plan_params; // 轨迹参数：dt / profile / accel_ratio
+    IKParams        ik_params;   // IK 参数
+    TrajPlanParams  plan_params; // 轨迹参数
 
     // ── 生命周期 ─────────────────────────────────────────────────────────────
 
@@ -96,8 +96,7 @@ public:
     /** 测地线轨迹规划 + 跟踪执行：SE(3) 空间最短路径平滑运动到 target */
     bool move_to_geodesic(const pinocchio::SE3& target);
 
-    /** 纯 IK 直连：求解一次 IK 后直接下发关节角，无轨迹插值。
-     *  末端变化幅度大时关节可能突变，谨慎使用。 */
+    /** 纯 IK 直连：求解一次 IK 后直接下发关节角，无轨迹插值 */
     bool move_to_ik(const pinocchio::SE3& target);
 
     /** 依次经过 poses 中的每个位姿，各段使用测地线轨迹 */
@@ -126,13 +125,9 @@ private:
     bool init_impl_(const std::string& dev, const std::string& yaml_path,
                     const std::string& urdf_path, bool monitor_only);
 
-    // 内部规划（仅被 move_to_geodesic / move_through_geodesic 调用）
+    // 内部规划（仅被 move_to_geodesic 调用）
     std::vector<JointTrajectoryPoint> plan_geodesic_(
         const pinocchio::SE3& target, double duration = 0.0);
-    bool plan_geodesic_multi_(
-        const std::vector<pinocchio::SE3>&              poses,
-        std::vector<std::vector<JointTrajectoryPoint>>& out_segs,
-        double segment_dur = SEGMENT_DURATION);
 
     void sync_q_();
     void apply_q_to_targets_(const Eigen::VectorXd& q_val);
