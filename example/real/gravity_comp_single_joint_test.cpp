@@ -44,12 +44,12 @@ static constexpr float NORMAL_KP      = 2.0f; // 正常模式下的小 kp（仅�
 static constexpr float KD_DAMP        = 1.0f; // 单关节重力补偿时的阻尼 [N·m·s/rad]
 
 static constexpr float RETURN_SEC     = 3.0f; // Ctrl+C 后回零时间 [s]
-static constexpr float RETURN_KP      = 5.0f; // 回零位置增益（仅对使能关节）[N·m/rad]
-static constexpr float RETURN_KD      = 1.5f; // 回零速度阻尼（仅对使能关节）[N·m·s/rad]
+static constexpr float RETURN_KP      = 2.0f; // 回零位置增益（仅对使能关节）[N·m/rad]
+static constexpr float RETURN_KD      = 1.0f; // 回零速度阻尼（仅对使能关节）[N·m·s/rad]
 static constexpr bool  RETURN_USE_G   = false; // 回零时是否叠加重力补偿 tau_ff
 
 // 默认使能关节索引（可通过 --enable 覆盖）
-static const std::vector<int> DEFAULT_ENABLE = {1,2,3};
+static const std::vector<int> DEFAULT_ENABLE = {0,1,2,3,4,5};
 
 // ─── 信号处理 ─────────────────────────────────────────────────────────────────
 static volatile sig_atomic_t g_stop_requested = 0;
